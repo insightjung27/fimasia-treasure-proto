@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧰</text></svg>">
 <title>떠리 보물찾기 — 발견형 커머스 프로토타입</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
@@ -473,7 +474,7 @@ function initDeck(){
   upd();
 }
 function upd(){document.getElementById('deckleft').textContent=Math.max(0,deck.length-di);document.getElementById('deckliked').textContent=liked.length;}
-function top(){return document.querySelector('.swcard[data-i="'+di+'"]');}
+function topCard(){return document.querySelector('.swcard[data-i="'+di+'"]');}
 function drag(el){
   let sx=0,sy=0,dx=0,dy=0,down=false;
   const start=e=>{down=true;const t=e.touches?e.touches[0]:e;sx=t.clientX;sy=t.clientY;el.style.transition='none';};
@@ -487,14 +488,14 @@ function drag(el){
   el.addEventListener('mousedown',start);el.addEventListener('mousemove',move);window.addEventListener('mouseup',end);
   el.addEventListener('touchstart',start,{passive:true});el.addEventListener('touchmove',move,{passive:true});el.addEventListener('touchend',end);
 }
-function swipe(dir){const el=top();if(!el)return;el.style.transition='transform .3s ease';fly(dir);}
+function swipe(dir){const el=topCard();if(!el)return;el.style.transition='transform .3s ease';fly(dir);}
 function fly(dir){
-  const el=top();if(!el)return;
+  const el=topCard();if(!el)return;
   el.style.transform=`translate(${dir==='right'?600:-600}px,40px) rotate(${dir==='right'?24:-24}deg)`;
   el.style.opacity=0;
   if(dir==='right'){liked.push(deck[di]);}
   di++;
-  setTimeout(()=>{const nx=top();if(nx)drag(nx);
+  setTimeout(()=>{const nx=topCard();if(nx)drag(nx);
     document.querySelectorAll('.swcard').forEach((c,k)=>{if(k>=di){const o=k-di;c.style.transform=`scale(${1-o*0.03}) translateY(${o*8}px)`;c.style.zIndex=deck.length-k;}});
     upd(); if(di>=deck.length) finishDeck();},260);
 }
