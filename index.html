@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧰</text></svg>">
 <title>떠리 보물찾기 — 발견형 커머스 프로토타입</title>
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
 <style>
 :root{
   --gold:#F2A20C; --gold-deep:#E4890B; --gold-soft:#FFF3DC;
@@ -17,7 +15,7 @@
 }
 *{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
 html,body{min-height:100%;}
-body{font-family:'Pretendard',system-ui,sans-serif; color:var(--ink); background:var(--bg); line-height:1.4;}
+body{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif; color:var(--ink); background:var(--bg); line-height:1.4;}
 img{max-width:100%;}
 
 /* 상단 내비 (PC) */
@@ -34,7 +32,7 @@ img{max-width:100%;}
 .navtabs .tab.on{color:#fff; background:var(--gold-deep);}
 .navtabs .tab.on .ti{filter:none; opacity:1;}
 .navsearch{flex:0 0 auto; display:flex; align-items:center; gap:8px;}
-.navsearch .sbox{display:flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); border-radius:22px; padding:9px 16px; color:#b3a998; font-size:14px; width:230px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.navsearch .sbox{display:flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); border-radius:22px; padding:9px 16px; color:#8a7f70; font-size:14px; width:230px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .ico{width:40px; height:40px; border-radius:50%; background:#fff; border:1px solid var(--line); display:grid; place-items:center; font-size:16px; color:var(--ink-2); box-shadow:var(--shadow); cursor:pointer; position:relative;}
 .cbadge{position:absolute; top:-5px; right:-5px; background:var(--red); color:#fff; font-size:10.5px; font-weight:800; min-width:18px; height:18px; border-radius:9px; display:grid; place-items:center; padding:0 4px;}
 
@@ -101,7 +99,7 @@ img{max-width:100%;}
 .pcard .nm{font-size:14px; font-weight:700; line-height:1.34; height:37px; overflow:hidden;}
 .pcard .price{display:flex; align-items:baseline; gap:7px; margin-top:8px; flex-wrap:wrap;}
 .pcard .price .fn{font-weight:900; font-size:18px; letter-spacing:-.02em;}
-.pcard .price .og{font-size:12.5px; color:#b7ad9f; text-decoration:line-through;}
+.pcard .price .og{font-size:12.5px; color:#7f7466; text-decoration:line-through;}
 .pcard .meta{display:flex; gap:6px; margin-top:10px; flex-wrap:wrap;}
 .pcard .tt{font-size:11px; font-weight:700; padding:3px 8px; border-radius:7px; background:var(--gold-soft); color:var(--gold-deep);}
 .pcard .tt.urgent{background:#fde4de; color:var(--red);}
@@ -128,7 +126,7 @@ img{max-width:100%;}
 .swcard .info .nm{font-size:20px; font-weight:800;}
 .swcard .info .pr{margin-top:8px; display:flex; align-items:baseline; gap:8px; flex-wrap:nowrap; white-space:nowrap;}
 .swcard .info .pr .fn{font-size:23px; font-weight:900;}
-.swcard .info .pr .og{font-size:14px; color:#b7ad9f; text-decoration:line-through;}
+.swcard .info .pr .og{font-size:14px; color:#7f7466; text-decoration:line-through;}
 .swcard .info .pr .dc{color:var(--red); font-weight:900; font-size:17px;}
 .stamp{position:absolute; top:30px; font-size:32px; font-weight:900; padding:6px 18px; border-radius:12px; border:4px solid; opacity:0; transform:rotate(-14deg); z-index:3;}
 .stamp.like{right:24px; color:var(--mint); border-color:var(--mint); background:#fff;}
@@ -185,7 +183,8 @@ img{max-width:100%;}
 .flashhero{background:linear-gradient(135deg,#e64a2e,#ff7d3a); border-radius:22px; padding:22px; color:#fff; text-align:center; box-shadow:0 14px 32px rgba(230,74,46,.32);}
 .flashhero .lab{font-size:14px; font-weight:800; opacity:.95; letter-spacing:.02em;}
 .flashhero .clock{font-size:52px; font-weight:900; letter-spacing:.04em; margin:4px 0; font-variant-numeric:tabular-nums;}
-.flashhero .lab2{font-size:13px; opacity:.9;}
+.flashhero .lab2{font-size:13px; color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.25);}
+.flashhero .lab2 b{font-weight:900;}
 .flashdeal{background:#fff; border-radius:20px; box-shadow:var(--shadow); overflow:hidden; margin-top:18px;}
 .flashdeal .ph{height:200px;}
 .flashdeal .disc{position:absolute; top:14px; left:14px; background:var(--red); color:#fff; font-weight:900; font-size:17px; padding:5px 12px; border-radius:11px; z-index:2;}
@@ -193,7 +192,7 @@ img{max-width:100%;}
 .flashdeal .nm{font-size:18px; font-weight:800;}
 .flashdeal .pr{display:flex; align-items:baseline; gap:10px; margin-top:7px;}
 .flashdeal .pr .fn{font-size:26px; font-weight:900;}
-.flashdeal .pr .og{font-size:14px; color:#b7ad9f; text-decoration:line-through;}
+.flashdeal .pr .og{font-size:14px; color:#7f7466; text-decoration:line-through;}
 .drain{height:10px; border-radius:6px; background:#efe7da; margin:16px 0 7px; overflow:hidden;}
 .drain i{display:block; height:100%; background:linear-gradient(90deg,var(--red),#ff9a6a); transition:width .8s ease;}
 .drainlab{font-size:13px; font-weight:700; color:var(--red);}
@@ -233,7 +232,7 @@ img{max-width:100%;}
 .cartrow .ci{flex:1; min-width:0;}
 .cartrow .ci .n{font-size:14.5px; font-weight:700; line-height:1.3;}
 .cartrow .ci .p{margin-top:4px; font-size:15px; font-weight:900;}
-.cartrow .ci .p .og{font-size:12px; color:#b7ad9f; text-decoration:line-through; font-weight:600; margin-left:6px;}
+.cartrow .ci .p .og{font-size:12px; color:#7f7466; text-decoration:line-through; font-weight:600; margin-left:6px;}
 .qty{display:flex; align-items:center; gap:12px; margin-top:10px;}
 .qty button{width:30px; height:30px; border-radius:9px; border:1px solid var(--line); background:#fff; font-size:17px; font-weight:900; cursor:pointer; color:var(--ink);}
 .qty b{font-size:15px; min-width:22px; text-align:center;}
@@ -292,7 +291,7 @@ img{max-width:100%;}
 .dinfo .dname{font-size:24px; font-weight:900; margin:6px 0 12px; line-height:1.3;}
 .dinfo .dprice{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
 .dinfo .dprice .fn{font-size:30px; font-weight:900; letter-spacing:-.02em;}
-.dinfo .dprice .og{font-size:15px; color:#b7ad9f; text-decoration:line-through;}
+.dinfo .dprice .og{font-size:15px; color:#7f7466; text-decoration:line-through;}
 .dinfo .dprice .dc{color:var(--red); font-size:19px; font-weight:900;}
 .dmeta{display:flex; gap:7px; margin:14px 0; flex-wrap:wrap;}
 .dmeta .tt{font-size:12px; font-weight:700; padding:5px 10px; border-radius:8px; background:var(--gold-soft); color:var(--gold-deep);}
@@ -329,14 +328,54 @@ img{max-width:100%;}
 
 /* 하단 탭바 (모바일) */
 .tabbar{display:none; position:fixed; bottom:0; left:0; right:0; height:64px; background:#fff; border-top:1px solid var(--line); z-index:60; box-shadow:0 -4px 16px rgba(60,45,20,.06);}
-.tabbar .tab{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; font-size:10.5px; color:#b3a998; font-weight:700; cursor:pointer;}
+.tabbar .tab{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; font-size:10.5px; color:var(--ink-2); font-weight:700; cursor:pointer;}
 .tabbar .tab .ti{font-size:21px; filter:grayscale(.4); opacity:.6;}
 .tabbar .tab.on{color:var(--gold-deep);}
 .tabbar .tab.on .ti{filter:none; opacity:1; transform:translateY(-1px);}
 
 /* 토스트 */
-.toast{position:fixed; bottom:88px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--ink); color:#fff; padding:12px 20px; border-radius:24px; font-size:13.5px; font-weight:700; opacity:0; transition:.3s; z-index:80; box-shadow:0 8px 20px rgba(0,0,0,.25); white-space:nowrap;}
+.toast{position:fixed; bottom:88px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--ink); color:#fff; padding:12px 20px; border-radius:24px; font-size:13.5px; font-weight:700; opacity:0; transition:.3s; z-index:80; box-shadow:0 8px 20px rgba(0,0,0,.25); max-width:calc(100vw - 40px); white-space:normal; word-break:keep-all; text-align:center; line-height:1.4;}
 .toast.on{opacity:1; transform:translateX(-50%) translateY(0);}
+
+/* 라운드1 추가 요소 */
+.stockbar.gold i{background:linear-gradient(90deg,var(--gold),#ffcf7a);}
+.stockbar.calm i{background:#d8cdba;}
+.stocklab.hot{color:var(--red); font-weight:800;}
+.stocklab.warm{color:var(--gold-deep); font-weight:700;}
+.mdinit{display:inline-grid; place-items:center; width:26px; height:26px; border-radius:50%; background:var(--gold-deep); color:#fff; font-size:11px; font-weight:900; margin-left:8px; vertical-align:middle; letter-spacing:.02em;}
+.mdcmt{margin-top:7px; font-size:11.5px; font-weight:800; color:var(--gold-deep); background:var(--gold-soft); padding:4px 8px; border-radius:8px; line-height:1.3;}
+.mdcmt.add{color:var(--mint); background:#dcf5ec; text-align:center;}
+.rail .rcard.bcard{flex:0 0 210px; background:linear-gradient(160deg,#2e3a52,#1c2536); color:#fff;}
+.rail .rcard.bcard .rb{color:#fff;}
+.rail .rcard.bcard .btag{display:inline-block; background:var(--gold); color:#241a00; font-size:10.5px; font-weight:900; padding:3px 8px; border-radius:20px; margin-bottom:6px;}
+.rail .rcard.bcard .nm{color:#fff;}
+.rail .rcard.bcard .pr .fn{color:#fff;}
+.rail .rcard.bcard .mdcmt{background:#ffffff22; color:#ffe9a8;}
+.bimgs{display:flex; height:120px; align-items:center; justify-content:center; gap:6px; padding:0 10px; background:radial-gradient(circle at 50% 30%,#f2a20c33,transparent 60%);}
+.bimgs img{width:56px; height:56px; border-radius:10px; object-fit:cover; box-shadow:0 4px 10px rgba(0,0,0,.3);}
+.cta.outline{background:#fff; color:var(--ink); border:1.5px solid var(--line); box-shadow:none;}
+.cta.outline:hover{background:#f6efe2;}
+.savebadge{display:inline-block; background:#dcf5ec; color:var(--mint); font-size:12px; font-weight:800; padding:5px 10px; border-radius:8px;}
+.freeship-ok{background:#dcf5ec; border-color:#bfe9d8; color:var(--mint); font-weight:800;}
+
+/* 라운드2 추가 요소 */
+.daystamp{display:inline-block; margin-top:6px; background:#ffffff2e; color:#fff; font-size:11.5px; font-weight:800; padding:3px 10px; border-radius:20px;}
+.cbox-th{display:flex; align-items:center; width:70px; height:70px; flex:0 0 auto; overflow:hidden; background:var(--gold-soft); border-radius:11px; padding:0 5px;}
+.cbox-th img{width:27px; height:27px; border-radius:7px; object-fit:cover; border:2px solid #fff; box-shadow:0 2px 5px rgba(0,0,0,.18); margin-left:-13px;}
+.cbox-th img:first-child{margin-left:0;}
+.cbox-sub{font-size:11.5px; color:var(--ink-2); margin:4px 0 2px; line-height:1.45;}
+.cbox-sub b{color:var(--mint);}
+.dx.target{border:2px solid var(--gold); box-shadow:0 0 0 3px #f2a20c22;}
+.dx .tgt{position:absolute; top:-8px; left:50%; transform:translateX(-50%); background:var(--gold); color:#241a00; font-size:9px; font-weight:900; padding:2px 7px; border-radius:10px; white-space:nowrap;}
+
+/* 라운드3: 접근성·대비·터치·마감 */
+*:focus-visible{outline:2px solid var(--gold-deep); outline-offset:2px; border-radius:inherit;}
+.pcard .heart::before{content:""; position:absolute; inset:-6px; border-radius:50%;}
+.qty button{min-width:36px; min-height:36px;}
+.cartrow .rm{min-width:40px; min-height:40px; display:inline-grid; place-items:center; padding:8px;}
+.demo-badge{display:inline-block; background:#ffffff2e; color:#fff; font-size:10.5px; font-weight:800; padding:2px 9px; border-radius:20px; letter-spacing:.01em;}
+.ticker .demo-badge{background:var(--gold-soft); color:var(--gold-deep); margin-left:6px;}
+.reveal .ritem .alg{font-size:10.5px; color:var(--ink-2); margin-top:5px; line-height:1.3; word-break:keep-all;}
 
 /* PC 웹 */
 @media (min-width:769px){
@@ -371,9 +410,9 @@ img{max-width:100%;}
       <div class="tab" data-s="my" onclick="go('my')"><span class="ti">🏆</span>마이</div>
     </nav>
     <div class="navsearch">
-      <div class="sbox">🔍 검색은 거들 뿐</div>
+      <div class="sbox" style="cursor:pointer" onclick="toast('🔍 검색은 거들 뿐 — 오늘의 보물은 아래에서 발견하세요')">🔍 검색은 거들 뿐</div>
       <div class="ico" onclick="go('cart')">🛒<span class="cbadge js-cc" style="display:none">0</span></div>
-      <div class="ico">🔔</div>
+      <div class="ico" onclick="notifyDaily()">🔔</div>
     </div>
   </div>
 </header>
@@ -381,9 +420,9 @@ img{max-width:100%;}
 <div class="mhead">
   <div class="logo" onclick="go('home')"><span class="chest">🧰</span>떠리 <b>보물찾기</b></div>
   <div class="r">
-    <div class="ico small">🔍</div>
+    <div class="ico small" onclick="toast('🔍 검색은 거들 뿐 — 오늘의 보물은 아래에서 발견하세요')">🔍</div>
     <div class="ico" onclick="go('cart')">🛒<span class="cbadge js-cc" style="display:none">0</span></div>
-    <div class="ico">🔔</div>
+    <div class="ico" onclick="notifyDaily()">🔔</div>
   </div>
 </div>
 
@@ -392,53 +431,59 @@ img{max-width:100%;}
   <section class="screen active" id="s-home">
     <div class="counter">
       <div class="big">🧭</div>
-      <div class="txt"><b>오늘 새로 뜬 보물 <span id="newcount">12</span>개</b><span>매일 바뀌는 임박 재고 — 지금 안 건지면 사라져요</span></div>
+      <div class="txt"><b>오늘 새로 뜬 보물 <span id="newcount">12</span>개</b><span>매일 바뀌는 임박 재고 — 지금 안 건지면 사라져요</span><span class="daystamp" id="daystamp">오늘의 보물</span></div>
     </div>
     <div class="toggle">
-      <div class="chip on">✨ 추천</div><div class="chip">전체</div>
-      <div class="chip">🍪 간식</div><div class="chip">🥗 신선</div><div class="chip">💊 건기식</div>
+      <div class="chip on" data-cat="추천" onclick="filterFeed('추천')">✨ 추천</div><div class="chip" data-cat="전체" onclick="filterFeed('전체')">전체</div>
+      <div class="chip" data-cat="간식" onclick="filterFeed('간식')">🍪 간식</div><div class="chip" data-cat="신선" onclick="filterFeed('신선')">🥗 신선</div><div class="chip" data-cat="건기식" onclick="filterFeed('건기식')">💊 건기식</div>
     </div>
-    <div class="sec-t"><h3>MD가 오늘 건진 보물 <small>사람이 고른 큐레이션</small></h3></div>
+    <div class="sec-t"><h3>MD가 오늘 건진 보물 <span class="mdinit">MD</span><small>할인율·임박도·소비기한 균형으로 골랐어요</small></h3></div>
     <div class="rail" id="rail"></div>
-    <div class="sec-t"><h3>취향 근처의 의외성 <small>구조화된 우연</small></h3><a>더보기</a></div>
+    <div class="sec-t"><h3>취향 근처의 의외성 <small>구조화된 우연</small></h3><a onclick="filterFeed('전체')" style="cursor:pointer">더보기</a></div>
     <div class="grid" id="feedgrid"></div>
+    <div class="notice" style="margin-top:22px;text-align:center">🌅 <b>내일 오전 새 보물 공개</b> · 다음 갱신까지 <b id="homenext">--:--:--</b> · <a onclick="notifyDaily()" style="cursor:pointer;color:var(--gold-deep);font-weight:800">매일 새 보물 알림 받기</a></div>
   </section>
 
   <!-- 스와이프 -->
   <section class="screen" id="s-pick">
     <div class="deckwrap">
-      <div class="deckhead"><div class="t">오늘의 픽</div><div class="cnt">남은 <b id="deckleft">8</b> · 찜 <b id="deckliked">0</b></div></div>
+      <div class="deckhead"><div class="t">오늘의 픽</div><div class="cnt"><a onclick="showRecap()" style="cursor:pointer;margin-right:10px;color:var(--gold-deep)">건진 것 보기</a>남은 <b id="deckleft">8</b> · 찜 <b id="deckliked">0</b></div></div>
       <div class="deckstack" id="deckstack"></div>
       <div class="deckbtns"><button class="pass" onclick="swipe('left')">✕</button><button class="like" onclick="swipe('right')">♥</button></div>
       <div class="deckhint">← 넘겨서 패스 · 찜하려면 ♥ 또는 오른쪽으로 → (PC는 카드를 드래그)</div>
     </div>
     <div class="recap" id="recap">
       <h3>오늘 <span id="recapn">0</span>개 건졌어요 🧰</h3>
-      <p>마감 임박순으로 정리했어요. 사라지기 전에 담아두세요.</p>
+      <p>마감 임박순으로 정리했어요. 사라지기 전에 담아두세요.<br>오늘 픽 다 봤어요 · 내일 오전 새 보물 8장이 도착해요.</p>
       <div class="rlist" id="rlist"></div>
       <button class="cta" onclick="addLiked()">찜한 보물 장바구니에 담기</button>
+      <button class="cta outline" style="margin-top:10px" onclick="restartDeck()">새로운 픽 더 보기</button>
     </div>
   </section>
 
   <!-- 보물상자 -->
   <section class="screen" id="s-box">
     <div class="narrow">
-      <div class="boxthemes"><div class="chip on">🍪 간식 상자</div><div class="chip">🧴 생활 상자</div><div class="chip">💊 건기식 상자</div></div>
+      <div class="boxthemes">
+        <div class="chip on" data-box="간식" onclick="selectBox('간식')">🍪 간식 상자</div>
+        <div class="chip" data-box="생활" onclick="selectBox('생활')">🧴 생활 상자</div>
+        <div class="chip" data-box="건기식" onclick="selectBox('건기식')">💊 건기식 상자</div>
+      </div>
       <div id="boxpick">
         <div class="boxcard">
           <span class="chest-big" id="chest">🎁</span>
-          <div><span class="save">정상가 대비 최소 42% 보장</span></div>
-          <h2>간식 보물상자</h2>
-          <div class="sub">과자·음료·베이커리 임박 재고를<br>랜덤 5종으로 구성 — 무엇이 올지는 열어봐야 압니다</div>
+          <div><span class="save" id="boxsave">정상가 대비 최소 42% 보장</span></div>
+          <h2 id="boxtitle">간식 보물상자</h2>
+          <div class="sub" id="boxsub">과자·음료·베이커리 임박 재고를<br>랜덤 5종으로 구성 — 무엇이 올지는 열어봐야 압니다</div>
         </div>
-        <div class="notice"><b>정직 고지</b> · 잔여 소비기한 최소 <b>D-12</b> · 구성 5종(간식 카테고리) · 알레르기 유발성분 표기 포함 · 실물 구성은 재고에 따라 달라질 수 있어요.</div>
-        <button class="cta dark" onclick="openBox()">🔓 보물상자 열기 · 14,900원</button>
+        <div class="notice" id="boxnotice"><b>정직 고지</b> · 잔여 소비기한 최소 <b>D-12</b> · 구성 5종(간식 카테고리) · 알레르기 유발성분 표기 포함 · 실물 구성은 재고에 따라 달라질 수 있어요.</div>
+        <button class="cta dark" id="boxopenbtn" onclick="openBox()">🔓 보물상자 열기 · 14,900원</button>
       </div>
       <div class="reveal" id="reveal">
         <div class="sec-t"><h3>짜잔! 오늘의 보물상자 🎉</h3></div>
         <div class="rgrid" id="revealgrid"></div>
         <div class="total" id="revealtotal"></div>
-        <button class="cta" onclick="addBox()">이 보물상자 장바구니에 담기 · 14,900원</button>
+        <button class="cta" id="boxaddbtn" onclick="addBox()">이 보물상자 장바구니에 담기 · 14,900원</button>
         <button class="cta dark" style="margin-top:10px" onclick="resetBox()">다른 상자 또 열어보기</button>
       </div>
     </div>
@@ -449,18 +494,19 @@ img{max-width:100%;}
     <div class="narrow">
       <div class="flashhero">
         <div class="lab">⚡ 지금 뜬 보물 · 반짝딜</div>
-        <div class="clock" id="clock">04:59</div>
-        <div class="lab2">이 시간이 지나면 원래 가격으로 돌아가요</div>
+        <div class="clock" id="clock">00:00</div>
+        <div class="lab2">오늘 <b>21:00</b>까지만 이 가격 · 이후 정상가로 복귀해요</div>
+        <div style="margin-top:8px"><span class="demo-badge">예시(데모 데이터)</span></div>
       </div>
       <div class="flashdeal">
         <div class="ph"><img src="img/cheese.jpg" alt="수제 브리치즈"><div class="disc">-63%</div></div>
         <div class="fb">
           <div class="nm">수제 브리치즈 200g (냉장)</div>
-          <div class="pr"><span class="fn">4,400원</span><span class="og">11,900원</span></div>
+          <div class="pr"><span class="fn">4,400원</span><span class="og">정상가 11,900원</span></div>
           <div class="drain"><i id="drain" style="width:38%"></i></div>
           <div class="drainlab" id="drainlab">🔥 62개 소진 · 38개 남음</div>
-          <div class="ticker"><div class="t" id="tickt">방금 <span class="b">김**님</span>이 담았어요</div></div>
-          <button class="cta" style="margin-top:16px" onclick="addFlash()">지금 담기</button>
+          <div class="ticker"><div class="t" id="tickt">최근 1시간 <span class="b">62명</span>이 담았어요 · 실시간 소진 중<span class="demo-badge">데모</span></div></div>
+          <button class="cta" id="flashbtn" style="margin-top:16px" onclick="addFlash()">지금 담기</button>
         </div>
       </div>
       <div class="sec-t"><h3>다음 보물은 랜덤 시간에 <small>언제 뜰지 몰라요</small></h3></div>
@@ -480,7 +526,7 @@ img{max-width:100%;}
       </div>
       <div class="mymenu">
         <div class="mm" onclick="go('orders')"><div class="i">🧾</div><div class="l">주문 내역</div></div>
-        <div class="mm" onclick="toast('찜한 보물은 프로토타입에서 생략')"><div class="i">❤️</div><div class="l">찜한 보물</div></div>
+        <div class="mm" onclick="go('wish')"><div class="i">❤️</div><div class="l">찜한 보물<span id="wishcount"></span></div></div>
         <div class="mm" onclick="toast('쿠폰함은 프로토타입에서 생략')"><div class="i">🎟️</div><div class="l">쿠폰함</div></div>
       </div>
       <div class="stampcard"><div class="h"><b>이번 주 보물 헌터 스탬프</b><span>2/10 · 완주 시 5,000P</span></div><div class="stamps" id="stamps"></div></div>
@@ -509,7 +555,7 @@ img{max-width:100%;}
           <label onclick="pickPay(this)"><span class="rd"></span>무통장 입금</label>
         </div>
       </div>
-      <div class="notice"><b>임박상품 안내</b> · 유통기한 임박 상품이 포함되어 있어요. 잔여 소비기한을 확인하고 빠르게 드세요. 단순 변심 반품은 신선/냉장 상품 특성상 제한될 수 있어요.</div>
+      <div class="notice"><b>임박상품 안내</b> · 소비기한 임박 상품이 포함되어 있어요. 유통기한이 아닌 소비기한(섭취 안전 잔여) 기준으로 안내드려요. 잔여 소비기한을 확인하고 빠르게 드세요. 단순 변심 반품은 신선/냉장 상품 특성상 제한될 수 있어요.</div>
       <div class="cobox"><div class="paytot"><span class="k">최종 결제금액</span><span class="v" id="cofinal">0원</span></div>
         <button class="cta" id="paybtn" onclick="placeOrder()">결제하기</button>
       </div>
@@ -528,6 +574,8 @@ img{max-width:100%;}
         <div class="r"><span class="k">아낀 금액</span><span class="save" id="ordsave">0원</span></div>
         <div class="r"><span class="k">적립 예정</span><b id="ordpoint">0P</b></div>
       </div>
+      <div class="notice" id="donereward" style="max-width:440px;margin:0 auto 14px;text-align:center;color:var(--gold-deep);font-weight:800"></div>
+      <div class="notice" style="max-width:440px;margin:0 auto 16px;text-align:center">🌅 <b>내일 오전 새 보물 공개</b> · <a onclick="notifyDaily()" style="cursor:pointer;color:var(--gold-deep);font-weight:800">알림 받기</a></div>
       <div class="actions">
         <button class="cta dark" onclick="go('orders')">주문 내역 보기</button>
         <button class="cta" onclick="go('home')">계속 보물 찾기</button>
@@ -550,6 +598,15 @@ img{max-width:100%;}
       <div id="ordersbody"></div>
     </div>
   </section>
+
+  <!-- 찜한 보물 -->
+  <section class="screen" id="s-wish">
+    <div class="narrow">
+      <div style="margin-bottom:14px"><a onclick="go('my')" style="font-size:14px;color:var(--ink-2);font-weight:700;cursor:pointer">← 마이로</a></div>
+      <div class="pgt">찜한 보물</div>
+      <div id="wishbody"></div>
+    </div>
+  </section>
 </main>
 
 <div class="toast" id="toast"></div>
@@ -565,43 +622,107 @@ img{max-width:100%;}
 <script>
 /* ===== 상품 데이터 (im = img/<slug>.jpg · 운영 시 샵바이 API 상품/이미지로 교체) ===== */
 const P = [
-  {im:'granola',n:'유기농 그래놀라 400g',og:12900,dc:5900,d:54,tl:'D-3',left:4,wow:1},
-  {im:'cookie',n:'수제 초코칩 쿠키 12입',og:9800,dc:3900,d:60,tl:'내일 마감',left:2,wow:1},
-  {im:'soymilk',n:'프리미엄 두유 24팩',og:19800,dc:9900,d:50,tl:'D-5',left:11},
-  {im:'juice',n:'제주 감귤주스 1L x3',og:14400,dc:6200,d:57,tl:'D-4',left:7},
-  {im:'nuts',n:'하루견과 믹스 30봉',og:16900,dc:7900,d:53,tl:'D-6',left:9},
-  {im:'coffee',n:'스페셜티 드립백 20개',og:18000,dc:8100,d:55,tl:'D-8',left:6},
-  {im:'yuja',n:'수제 유자청 500g',og:11000,dc:4400,d:60,tl:'D-2',left:3,wow:1},
-  {im:'probiotics',n:'유산균 프로바이오 30포',og:29000,dc:13900,d:52,tl:'D-9',left:5},
-  {im:'jelly',n:'저칼로리 곤약젤리 20입',og:9900,dc:3600,d:64,tl:'내일 마감',left:2,wow:1},
-  {im:'dumpling',n:'손만두 모둠 1.2kg (냉동)',og:13900,dc:6900,d:50,tl:'D-7',left:8},
-  {im:'oatmeal',n:'통귀리 오트밀 1kg',og:8900,dc:3900,d:56,tl:'D-4',left:6},
-  {im:'cheese',n:'수제 브리치즈 200g (냉장)',og:11900,dc:4400,d:63,tl:'오늘 마감',left:3,wow:1},
+  {im:'granola',n:'유기농 그래놀라 400g',og:12900,dc:5900,d:54,tl:'D-3',left:4,wow:1,c:'간식',exp:'2026.08.16',origin:'미국산',alg:'대두·견과 함유 가능'},
+  {im:'cookie',n:'수제 초코칩 쿠키 12입',og:9800,dc:3900,d:60,tl:'내일 마감',left:2,wow:1,c:'간식',exp:'2026.08.14',origin:'국산',alg:'밀·우유·대두 함유'},
+  {im:'soymilk',n:'프리미엄 두유 24팩',og:19800,dc:9900,d:50,tl:'D-5',left:11,c:'음료',exp:'2026.08.18',origin:'국산',alg:'대두 함유'},
+  {im:'juice',n:'제주 감귤주스 1L x3',og:14400,dc:6200,d:57,tl:'D-4',left:7,c:'음료',exp:'2026.08.17',origin:'국산(제주)',alg:'복숭아 알레르기 주의'},
+  {im:'nuts',n:'하루견과 믹스 30봉',og:16900,dc:7900,d:53,tl:'D-6',left:9,c:'건기식',exp:'2026.08.19',origin:'수입산(혼합)',alg:'땅콩·견과류 함유'},
+  {im:'coffee',n:'스페셜티 드립백 20개',og:18000,dc:8100,d:55,tl:'D-8',left:6,c:'음료',exp:'2026.08.21',origin:'에티오피아산',alg:'해당 없음'},
+  {im:'yuja',n:'수제 유자청 500g',og:11000,dc:4400,d:60,tl:'D-2',left:3,wow:1,c:'건기식',exp:'2026.08.15',origin:'국산(고흥)',alg:'해당 없음'},
+  {im:'probiotics',n:'유산균 프로바이오 30포',og:29000,dc:13900,d:52,tl:'D-9',left:5,c:'건기식',exp:'2026.08.22',origin:'덴마크산',alg:'우유·대두 함유 가능'},
+  {im:'jelly',n:'저칼로리 곤약젤리 20입',og:9900,dc:3600,d:64,tl:'내일 마감',left:2,wow:1,c:'간식',exp:'2026.08.14',origin:'국산',alg:'해당 없음'},
+  {im:'dumpling',n:'손만두 모둠 1.2kg (냉동)',og:13900,dc:6900,d:50,tl:'D-7',left:8,c:'간편식',exp:'2026.08.20',origin:'국산',alg:'밀·대두·돼지고기 함유'},
+  {im:'oatmeal',n:'통귀리 오트밀 1kg',og:8900,dc:3900,d:56,tl:'D-4',left:6,c:'건기식',exp:'2026.08.17',origin:'호주산',alg:'귀리(글루텐) 함유'},
+  {im:'cheese',n:'수제 브리치즈 200g (냉장)',og:11900,dc:4400,d:63,tl:'오늘 마감',left:3,wow:1,c:'신선',exp:'2026.08.13',origin:'국산',alg:'우유 함유'},
 ];
+/* 알레르기 표기 SSOT (im 슬러그 기준) — 보물상자 리빌 등 P 밖에서도 공용 */
+const ALG={granola:'대두·견과 함유 가능',cookie:'밀·우유·대두 함유',soymilk:'대두 함유',juice:'복숭아 알레르기 주의',nuts:'땅콩·견과류 함유',coffee:'해당 없음',yuja:'해당 없음',probiotics:'우유·대두 함유 가능',jelly:'해당 없음',dumpling:'밀·대두·돼지고기 함유',oatmeal:'귀리(글루텐) 함유',cheese:'우유 함유',chocolate:'우유·대두 함유',pretzel:'밀 함유'};
+/* ===== 카테고리 택소노미 SSOT (홈 필터·상세·도감 공통 매핑) ===== */
+const CATMETA={'간식':'🍪','음료':'🧃','건기식':'💊','간편식':'🥟','신선':'🥗'};
 const won = v => v.toLocaleString('ko-KR')+'원';
 function bg(i){const g=['#FFF3DC','#FDEDE6','#E9F6EF','#EEF1FA','#FBEEF6','#FEF6E0'];return g[i%g.length];}
+/* 재고 신호: 희소할수록 붉게·바 좁게 (역방향 신호 제거) — card()·renderDetail() 공통 */
+function stockView(p){
+  const w=Math.min(100, p.left*12);
+  if(p.left<=3) return {show:true, w, barCls:'', labCls:'hot', lab:`🔥 마지막 ${p.left}개 · 마감임박`, urgent:true};
+  if(p.left<=6) return {show:true, w, barCls:'gold', labCls:'warm', lab:`${p.left}개 남음 · 소진 빠름`, urgent:true};
+  return {show:false, w, barCls:'', labCls:'', lab:`${p.left}개 남음`, urgent:false};
+}
+/* ===== 세션 진척·찜 상태 (라운드2 게이미피케이션) ===== */
+const progress={discovered:23, picked:0, bought:0, saved:142000, stamps:2, level:4};
+const wish=[];
+function inWish(i){return wish.includes(i);}
+function toggleWish(i){const at=wish.indexOf(i); if(at>=0){wish.splice(at,1); return false;} wish.push(i); progress.picked++; return true;}
+function shuffle(a){return [...a].sort(()=>Math.random()-0.5);}
+/* MD 한마디: 상품 속성(임박·할인율·재고·냉장/냉동·wow·대용량)에 1:1로 묶인 사실 근거만 반환 (최상급·단정 어휘 배제) */
+function mdReason(p){
+  const dd=ddayNum(p.tl);
+  if(/마감|내일/.test(p.tl)) return `${dd===0?'오늘':dd===1?'내일':'D-'+dd} 마감 임박 · -${p.d}%`;
+  if(/냉장|냉동/.test(p.n)) return '냉장 신선 · 오늘출발 보냉포장';
+  if(p.wow && p.dc*2<=p.og) return `정상가 절반 이하 · ${won(p.og-p.dc)} 아낌`;
+  const m=p.n.match(/(\d+)\s*(팩|봉|포)/);
+  if(m) return `${m[2]}당 ${won(Math.round(p.dc/+m[1]))} · 대용량 알뜰`;
+  return `소비기한 여유 ${p.tl} · 할인 ${p.d}%`;
+}
 function card(p,i){
-  const stock = Math.min(100, Math.round((p.left/12)*100)+8);
+  const sv=stockView(p);
   return `<div class="pcard" style="animation-delay:${i*40}ms">
     <div class="ph" style="background:${bg(i)}" onclick="openDetail(${i})"><img src="img/${p.im}.jpg" alt="${p.n}" loading="lazy">
-      <div class="disc">-${p.d}%</div><div class="heart" onclick="heart(this,event)">♥</div>
+      <div class="disc">-${p.d}%</div><div class="heart ${inWish(i)?'on':''}" onclick="heart(this,event,${i})">♥</div>
       ${p.wow?'<div class="wow">이 가격에?</div>':''}</div>
     <div class="body">
       <div class="nm" onclick="openDetail(${i})" style="cursor:pointer">${p.n}</div>
       <div class="price"><span class="fn">${won(p.dc)}</span><span class="og">${won(p.og)}</span></div>
-      <div class="meta"><span class="tt ${p.left<=3?'urgent':''}">⏱ ${p.tl}</span><span class="tt">🧾 소비기한 임박</span></div>
-      <div class="stockbar"><i style="width:${stock}%"></i></div>
-      <div class="stocklab">${p.left}개 남음 · 빠르게 소진 중</div>
+      <div class="meta"><span class="tt ${p.left<=3?'urgent':''}">⏱ 소비기한 ${p.tl}</span><span class="tt">🧾 ~${p.exp}</span></div>
+      ${sv.show?`<div class="stockbar ${sv.barCls}"><i style="width:${sv.w}%"></i></div>`:''}
+      <div class="stocklab ${sv.labCls}">${sv.lab}</div>
       <button class="addbtn" onclick="addCartI(${i},this)">담기</button>
     </div></div>`;
 }
-function railcard(p,i){
-  return `<div class="rcard" onclick="openDetail(${i+5})"><div class="ph" style="background:${bg(i+2)}"><img src="img/${p.im}.jpg" alt="${p.n}" loading="lazy"></div>
-    <div class="rb"><div class="nm">${p.n}</div><div class="pr"><span class="dc">-${p.d}%</span><span class="fn">${won(p.dc)}</span></div></div></div>`;
+function railcard(p,idx,addMode){
+  const click = addMode? `addCartI(${idx});renderCart()` : `openDetail(${idx})`;
+  const foot = addMode? '<div class="mdcmt add">+ 담기</div>' : `<div class="mdcmt">MD 한마디 · ${mdReason(p)}</div>`;
+  return `<div class="rcard" onclick="${click}"><div class="ph" style="background:${bg(idx+2)}"><img src="img/${p.im}.jpg" alt="${p.n}" loading="lazy"></div>
+    <div class="rb"><div class="nm">${p.n}</div><div class="pr"><span class="dc">-${p.d}%</span><span class="fn">${won(p.dc)}</span></div>${foot}</div></div>`;
 }
-document.getElementById('feedgrid').innerHTML = P.map(card).join('');
-document.getElementById('rail').innerHTML = P.slice(5,11).map(railcard).join('');
-function heart(el,ev){ev.stopPropagation(); el.classList.toggle('on'); if(el.classList.contains('on')) toast('찜했어요 · 재입고·유사딜 알림 ♥');}
+/* 홈 MD 레일: 임박도·wow·할인율 기준 상위 6종 + 3종 묶음 카드 */
+function ddayNum(tl){ if(/오늘/.test(tl)) return 0; if(/내일/.test(tl)) return 1; const m=tl.match(/D-(\d+)/); return m?+m[1]:99; }
+const BUNDLE={idx:[7,4,2]}; // 유산균·견과·두유 (무료배송 임계 달성 구성)
+function bundleCard(){
+  const items=BUNDLE.idx.map(i=>P[i]);
+  const price=items.reduce((a,p)=>a+p.dc,0);
+  const saved=items.reduce((a,p)=>a+(p.og-p.dc),0);
+  return `<div class="rcard bcard" onclick="addBundle()">
+    <div class="bimgs">${items.map(p=>`<img src="img/${p.im}.jpg" alt="${p.n}">`).join('')}</div>
+    <div class="rb"><div class="btag">오늘의 3종 묶음</div><div class="nm">함께 담으면 무료배송</div>
+      <div class="pr"><span class="fn">${won(price)}</span></div><div class="mdcmt">${won(saved)} 아낌 · 담기</div></div></div>`;
+}
+function addBundle(){ BUNDLE.idx.forEach(i=>addCartObj(P[i])); toast('3종 묶음을 담았어요 🧰'); go('cart'); }
+function renderRail(){
+  const railIdx=P.map((p,i)=>i).sort((a,b)=> ddayNum(P[a].tl)-ddayNum(P[b].tl) || (P[b].wow?1:0)-(P[a].wow?1:0) || P[b].d-P[a].d ).slice(0,6);
+  document.getElementById('rail').innerHTML = bundleCard() + railIdx.map(i=>railcard(P[i],i)).join('');
+}
+/* 홈 카테고리 필터 칩: P에 실제 존재하는 c에서 동적 생성 (SSOT) */
+function buildCatChips(){
+  const cats=[...new Set(P.map(p=>p.c))];
+  document.querySelector('#s-home .toggle').innerHTML =
+    `<div class="chip on" data-cat="추천" onclick="filterFeed('추천')">✨ 추천</div><div class="chip" data-cat="전체" onclick="filterFeed('전체')">전체</div>`+
+    cats.map(c=>`<div class="chip" data-cat="${c}" onclick="filterFeed('${c}')">${CATMETA[c]||''} ${c}</div>`).join('');
+}
+function filterFeed(cat){
+  document.querySelectorAll('#s-home .toggle .chip').forEach(c=>c.classList.toggle('on', c.dataset.cat===cat));
+  let items = P.map((p,i)=>({p,i}));
+  if(cat==='추천') items.sort((a,b)=>(b.p.wow?1:0)-(a.p.wow?1:0));
+  else if(cat!=='전체') items = items.filter(o=>o.p.c===cat);
+  const grid=document.getElementById('feedgrid');
+  grid.innerHTML = items.length ? items.map(o=>card(o.p,o.i)).join('')
+    : '<div class="empty" style="grid-column:1/-1"><div class="eico">🧺</div><p>이 카테고리엔 오늘 뜬 보물이 없어요.</p></div>';
+}
+buildCatChips();
+filterFeed('추천');
+renderRail();
+function heart(el,ev,i){ev.stopPropagation(); const on=toggleWish(i); el.classList.toggle('on',on); el.setAttribute('aria-pressed',on?'true':'false'); if(on) toast('찜했어요 · 재입고·유사딜 알림 ♥'); updateWishBadge();}
+function notifyDaily(){ toast('🔔 매일 새 보물 알림을 켰어요 · 매일 오전 새 보물 공개'); }
 (function(){let n=0;const t=document.getElementById('newcount');const iv=setInterval(()=>{n+=1;t.textContent=n;if(n>=12)clearInterval(iv);},60);})();
 
 /* ===== 탭 전환 ===== */
@@ -615,12 +736,14 @@ function go(s){
   if(s==='cart') renderCart();
   if(s==='checkout') renderCheckout();
   if(s==='orders') renderOrders();
+  if(s==='wish') renderWish();
+  if(s==='my'){ renderDex(); renderMyStats(); renderStamps(); }
 }
 
 /* ===== 스와이프 ===== */
 let deck=[...P].sort(()=>0.4-Math.random()).slice(0,8), di=0, liked=[], deckInit=false;
-function initDeck(){
-  deckInit=true; di=0; liked=[];
+function initDeck(keep){
+  deckInit=true; di=0; if(!keep) liked=[];
   const stack=document.getElementById('deckstack'); stack.innerHTML='';
   deck.forEach((p,idx)=>{
     const el=document.createElement('div'); el.className='swcard'; el.dataset.i=idx;
@@ -665,51 +788,167 @@ function finishDeck(){
   document.getElementById('recap').classList.add('on');
   document.getElementById('recapn').textContent=liked.length;
   document.getElementById('rlist').innerHTML = liked.length? liked.map(p=>
-    `<div class="rrow"><img src="img/${p.im}.jpg" alt=""><div class="m"><div class="n">${p.n}</div><div class="p">${won(p.dc)} · ${p.tl}</div></div></div>`).join('')
-    : '<div class="rrow"><div class="m"><div class="n">이번엔 패스만 했네요</div><div class="p">홈에서 더 둘러보세요</div></div></div>';
+    `<div class="rrow"><img src="img/${p.im}.jpg" alt="${p.n}"><div class="m"><div class="n">${p.n}</div><div class="p">${won(p.dc)} · ${p.tl}</div></div></div>`).join('')
+    : '<div class="rrow" style="cursor:pointer" onclick="go(\'home\')"><div class="m"><div class="n">이번엔 패스만 했네요</div><div class="p">홈에서 더 둘러보기 →</div></div></div>';
 }
+function restartDeck(){
+  deck=shuffle(P).slice(0,8); deckInit=false; di=0; // 새 픽 · 찜(liked) 목록은 누적 유지
+  document.getElementById('recap').classList.remove('on');
+  document.querySelector('#s-pick .deckwrap').style.display='block';
+  initDeck(true);
+}
+function showRecap(){ finishDeck(); }
 function addLiked(){ if(!liked.length){toast('찜한 게 없어요');return;} liked.forEach(p=>addCartObj(p)); toast(`${liked.length}개 담았어요 🛒`); go('cart'); }
 
 /* ===== 보물상자 ===== */
-const boxItems=[{im:'chocolate',n:'다크초콜릿 바',v:4200},{im:'cookie',n:'버터쿠키 세트',v:5500},{im:'pretzel',n:'프레첼 스낵',v:3200},{im:'juice',n:'유기농 주스',v:3800},{im:'granola',n:'허니 그래놀라',v:6100}];
+const BOXES={
+  '간식':{chest:'🎁',title:'간식 보물상자',save:'정상가 대비 최소 42% 보장',price:14900,
+    sub:'과자·음료·베이커리 임박 재고를<br>랜덤 5종으로 구성 — 무엇이 올지는 열어봐야 압니다',
+    notice:'<b>정직 고지</b> · 잔여 소비기한 최소 <b>D-12</b> · 구성 5종(간식 카테고리) · 알레르기 유발성분 표기 포함 · 실물 구성은 재고에 따라 달라질 수 있어요.',
+    pool:[{im:'chocolate',n:'다크초콜릿 바',og:6900},{im:'cookie',n:'버터쿠키 세트',og:9800},{im:'pretzel',n:'프레첼 스낵',og:5500},{im:'jelly',n:'저칼로리 곤약젤리',og:9900},{im:'granola',n:'허니 그래놀라',og:12900},{im:'nuts',n:'하루견과 믹스',og:16900}]},
+  '생활':{chest:'📦',title:'생활 보물상자',save:'정상가 대비 최소 40% 보장',price:16900,
+    sub:'두유·오트밀·냉장/냉동 등 매일 챙기는<br>생활 먹거리 임박 재고 랜덤 5종',
+    notice:'<b>정직 고지</b> · 잔여 소비기한 최소 <b>D-10</b> · 냉장·냉동 포함(보냉 포장 배송) · 구성 5종(생활 먹거리) · 실물 구성은 재고에 따라 달라질 수 있어요.',
+    pool:[{im:'soymilk',n:'프리미엄 두유 24팩',og:19800},{im:'oatmeal',n:'통귀리 오트밀 1kg',og:8900},{im:'dumpling',n:'손만두 모둠 1.2kg',og:13900},{im:'cheese',n:'수제 브리치즈 200g',og:11900},{im:'coffee',n:'스페셜티 드립백 20개',og:18000},{im:'juice',n:'제주 감귤주스 1L x3',og:14400}]},
+  '건기식':{chest:'🧧',title:'건기식 보물상자',save:'정상가 대비 최소 45% 보장',price:19900,
+    sub:'유산균·견과·그래놀라 등 웰니스<br>건강 먹거리 임박 재고 랜덤 5종',
+    notice:'<b>정직 고지</b> · 잔여 소비기한 최소 <b>D-30</b> · 구성 5종(건기식·웰니스) · 건강기능식품/일반식품 혼합·개별 표기 · 실물 구성은 재고에 따라 달라질 수 있어요.',
+    pool:[{im:'probiotics',n:'유산균 프로바이오 30포',og:29000},{im:'nuts',n:'하루견과 믹스 30봉',og:16900},{im:'granola',n:'유기농 그래놀라 400g',og:12900},{im:'yuja',n:'수제 유자청 500g',og:11000},{im:'oatmeal',n:'통귀리 오트밀 1kg',og:8900},{im:'soymilk',n:'프리미엄 두유 24팩',og:19800}]}
+};
+let curBox='간식';
+/* 절약률 단일 출처: 뽑힌 5종(b.drawn)의 og 합계 기준으로만 배지·안내·리빌을 렌더 */
+function drawnItems(b){ return b.drawn && b.drawn.length ? b.drawn : b.pool.slice(0,5); }
+function boxCalc(b){ const arr=drawnItems(b); const sumOg=arr.reduce((a,x)=>a+x.og,0); const rate=Math.round((1-b.price/sumOg)*100); return {sumOg, rate}; }
+function applyBox(){
+  const b=BOXES[curBox];
+  document.getElementById('boxsave').textContent=b.save;
+  document.getElementById('boxtitle').textContent=b.title;
+  document.getElementById('boxsub').innerHTML=b.sub;
+  document.getElementById('boxnotice').innerHTML=b.notice;
+  document.getElementById('boxopenbtn').textContent=`🔓 보물상자 열기 · ${won(b.price)}`;
+  document.getElementById('boxaddbtn').textContent=`이 보물상자 장바구니에 담기 · ${won(b.price)}`;
+  document.getElementById('chest').textContent=b.chest;
+}
+function selectBox(key){
+  if(!BOXES[key]) return;
+  curBox=key;
+  document.querySelectorAll('#s-box .boxthemes .chip').forEach(c=>c.classList.toggle('on',c.dataset.box===key));
+  resetBox(); applyBox();
+}
 function openBox(){
+  const b=BOXES[curBox];
+  b.drawn=shuffle(b.pool).slice(0,5); // 열 때마다 후보 풀에서 5종 무작위 추출
   const c=document.getElementById('chest'); c.textContent='🧰'; c.classList.add('shake'); toast('보물상자를 여는 중... ✨');
   setTimeout(()=>{
     document.getElementById('boxpick').style.display='none';
     document.getElementById('reveal').classList.add('on');
-    document.getElementById('revealgrid').innerHTML=boxItems.map((it,i)=>
-      `<div class="ritem" style="animation-delay:${i*120}ms"><img src="img/${it.im}.jpg" alt="${it.n}"><div class="n">${it.n}</div><div class="v">가치 ${won(it.v)}</div></div>`).join('');
-    const tot=boxItems.reduce((a,b)=>a+b.v,0);
-    document.getElementById('revealtotal').innerHTML=`총 가치 ${won(tot)} → 결제 14,900원 · <b>${won(tot-14900)} 절약!</b>`;
+    document.getElementById('revealgrid').innerHTML=b.drawn.map((it,i)=>
+      `<div class="ritem" style="animation-delay:${i*120}ms"><img src="img/${it.im}.jpg" alt="${it.n}"><div class="n">${it.n}</div><div class="v">정상가 ${won(it.og)}</div><div class="alg">알레르기 ${ALG[it.im]||'표기 확인'}</div></div>`).join('');
+    const {sumOg,rate}=boxCalc(b);
+    document.getElementById('revealtotal').innerHTML=`정상가 합계 ${won(sumOg)} → 상자가 ${won(b.price)} · <b>${won(sumOg-b.price)}(${rate}%) 절약</b>`;
   },1050);
 }
-function resetBox(){document.getElementById('reveal').classList.remove('on');document.getElementById('boxpick').style.display='block';document.getElementById('chest').classList.remove('shake');document.getElementById('chest').textContent='🎁';}
-function addBox(){ addCartObj({im:'chocolate',n:'간식 보물상자 (랜덤 5종)',dc:14900,og:22800}); toast('보물상자를 담았어요 🧰'); go('cart'); }
+function resetBox(){document.getElementById('reveal').classList.remove('on');document.getElementById('boxpick').style.display='block';const c=document.getElementById('chest');c.classList.remove('shake');c.textContent=BOXES[curBox].chest;}
+function addBox(){
+  const b=BOXES[curBox]; const arr=drawnItems(b); const sumOg=arr.reduce((a,x)=>a+x.og,0);
+  addCartObj({im:arr[0].im, n:`${b.title} (랜덤 5종)`, dc:b.price, og:sumOg,
+    box:true, sub:arr.slice(0,3).map(x=>x.n).join(' · ')+' 등 5종', saveOg:sumOg, bimgs:arr.map(x=>x.im)});
+  toast('보물상자를 담았어요 🧰'); go('cart');
+}
+applyBox(); // 초기 배지를 og 합계 기준으로 렌더
 
 /* ===== 지금 뜬 보물 ===== */
-const flashProduct={im:'cheese',n:'수제 브리치즈 200g (냉장)',dc:4400,og:11900};
-let flashTimer=null, flashSec=299, drainPct=38;
+const flashProduct={im:'cheese',n:'수제 브리치즈 200g (냉장)',dc:4400,og:11900,c:'신선'};
+/* 반짝딜 종료는 '오늘 21:00' 고정 실시각 기준 (세션마다 리셋되던 조작 프레임 제거) */
+function secsTo21(){ const now=new Date(); const end=new Date(now); end.setHours(21,0,0,0); return Math.floor((end-now)/1000); }
+function fmtClock(sec){ sec=Math.max(0,sec); const h=Math.floor(sec/3600), m=Math.floor(sec%3600/60), s=sec%60; const p=n=>String(n).padStart(2,'0'); return h>0?`${p(h)}:${p(m)}:${p(s)}`:`${p(m)}:${p(s)}`; }
+let flashTimer=null, flashSec=secsTo21(), drainPct=38, flashEnded=false;
 function startFlash(){
-  if(flashTimer) return;
+  flashSec=secsTo21();
+  document.getElementById('clock').textContent=fmtClock(flashSec);
+  if(flashSec<=0){ endFlash(); return; }
+  if(flashTimer||flashEnded) return;
   flashTimer=setInterval(()=>{
-    flashSec--; if(flashSec<0){flashSec=299;}
-    const m=String(Math.floor(flashSec/60)).padStart(2,'0'), s=String(flashSec%60).padStart(2,'0');
-    document.getElementById('clock').textContent=`${m}:${s}`;
-    if(flashSec%5===0 && drainPct>6){drainPct-=2;document.getElementById('drain').style.width=drainPct+'%';
-      document.getElementById('drainlab').textContent=`🔥 ${100-drainPct}개 소진 · ${drainPct}개 남음`;}
-    if(flashSec%3===0){const names=['김**','이**','박**','최**','정**','한**'];const acts=['담았어요','결제했어요','찜했어요'];
+    flashSec--;
+    if(flashSec<=0){ endFlash(); return; }
+    document.getElementById('clock').textContent=fmtClock(flashSec);
+    if(flashSec%5===0 && drainPct>0){
+      drainPct=Math.max(0,drainPct-2);
+      document.getElementById('drain').style.width=drainPct+'%';
+      document.getElementById('drainlab').textContent = drainPct<=0? '품절 · 다음 반짝딜을 기다려요' : `🔥 ${100-drainPct}개 소진 · ${drainPct}개 남음`;
+      if(drainPct<=0){ const fb=document.getElementById('flashbtn'); if(fb){ fb.disabled=true; fb.textContent='품절 · 다음 딜 대기'; } }
+    }
+    if(flashSec%3===0){ /* 실운영 시 실제 주문 이벤트에 연결 · 현재는 예시(데모) 집계 문구 (개인명 랜덤 제거) */
+      const msgs=['최근 1시간 <span class="b">62명</span>이 담았어요 · 실시간 소진 중','오늘 이 상품 <span class="b">담기 62건</span> · 재고 빠르게 소진','지금 <span class="b">여러 명</span>이 함께 보고 있어요'];
       const t=document.getElementById('tickt');t.style.animation='none';void t.offsetWidth;t.style.animation='tick 2.6s ease';
-      t.innerHTML=`방금 <span class="b">${names[Math.floor(Math.random()*6)]}님</span>이 ${acts[Math.floor(Math.random()*3)]}`;}
+      t.innerHTML=msgs[Math.floor(flashSec/3)%msgs.length]+'<span class="demo-badge">데모</span>';}
   },1000);
 }
-function addFlash(){ addCartObj(flashProduct); toast('반짝딜을 담았어요 ⚡'); }
+function endFlash(){
+  clearInterval(flashTimer); flashTimer=null; flashEnded=true;
+  document.getElementById('clock').textContent='00:00 · 마감';
+  const hero=document.querySelector('.flashhero .lab2'); if(hero) hero.textContent='다음 반짝딜까지 대기 · 알림 받기';
+  const btn=document.getElementById('flashbtn'); if(btn){ btn.disabled=true; btn.textContent='원가로 복귀했어요'; }
+  const dl=document.getElementById('drainlab'); if(dl) dl.textContent = drainPct<=0? '품절 · 다음 반짝딜을 기다려요' : '마감 · 원가로 복귀했어요';
+  const tk=document.getElementById('tickt'); if(tk){ tk.style.animation='none'; tk.innerHTML='이번 반짝딜은 마감됐어요'; }
+}
+function addFlash(){ if(flashEnded||drainPct<=0){toast('품절됐어요 · 다음 반짝딜을 기다려요');return;} addCartObj(flashProduct); toast('반짝딜을 담았어요 ⚡'); }
 
 /* ===== 마이 ===== */
-document.getElementById('stamps').innerHTML=Array.from({length:10},(_,i)=> i<2?'<div class="st done">🧰</div>':(i===2?'<div class="st next">?</div>':'<div class="st">·</div>')).join('');
-const dexc=[{e:'🍪',n:'간식',on:1},{e:'🥛',n:'유제품',on:1},{e:'☕',n:'커피',on:1},{e:'🥜',n:'견과',on:1},
-{e:'🧃',n:'음료',on:1},{e:'💊',n:'건기식',on:0},{e:'🥟',n:'냉동',on:0},{e:'🧀',n:'치즈',on:1},
-{e:'🍯',n:'잼·청',on:1},{e:'🌾',n:'시리얼',on:0},{e:'🥗',n:'신선',on:0},{e:'🍞',n:'베이커리',on:1}];
-document.getElementById('dex').innerHTML=dexc.map(d=>`<div class="dx ${d.on?'':'lock'}">${d.e}<span class="lb">${d.n}</span></div>`).join('');
+function renderStamps(){
+  const done=progress.stamps;
+  document.getElementById('stamps').innerHTML=Array.from({length:10},(_,i)=>
+    i<done?'<div class="st done">🧰</div>':(i===done?'<div class="st next">?</div>':'<div class="st">·</div>')).join('');
+  const lab=document.querySelector('#s-my .stampcard .h span');
+  if(lab) lab.textContent = done>=10?'완주! 5,000P 적립 대상':`${done}/10 · 완주 시 5,000P`;
+}
+function bumpStamp(n){
+  const before=progress.stamps;
+  progress.stamps=Math.min(10,progress.stamps+n);
+  renderStamps();
+  if(progress.stamps>before){
+    if(progress.stamps>=10) toast('스탬프 10칸 완주! 5,000P 적립 🎉');
+    else { const left=10-progress.stamps; setTimeout(()=>toast(`스탬프 획득! 완주까지 ${left}칸`),1900); }
+  }
+}
+function renderMyStats(){
+  const vs=document.querySelectorAll('#s-my .summ .s .v');
+  if(vs.length>=3){ vs[1].textContent=(progress.saved/10000).toFixed(1)+'만'; vs[2].textContent=progress.discovered; }
+  updateWishBadge();
+}
+function maybeLevelUp(){
+  const lv=Math.max(4, 4 + progress.bought + Math.floor((progress.discovered-23)/6));
+  if(lv>progress.level){ progress.level=lv; toast(`승급! Lv.${lv} 발견가 🏆`); }
+  const el=document.querySelector('#s-my .mytop .lv');
+  if(el) el.textContent=`Lv.${progress.level} 발견가 · 이번 주 ${7+progress.bought}개 발견`;
+}
+function updateWishBadge(){ const wc=document.getElementById('wishcount'); if(wc) wc.textContent=wish.length?` (${wish.length})`:''; }
+renderStamps();
+/* 도감 12칸 — 앞 5칸은 실제 카테고리 c와 연동('담으면 열림'), 나머지는 수집형 */
+const dexc=[{e:'🍪',n:'간식',cat:'간식'},{e:'🧃',n:'음료',cat:'음료'},{e:'💊',n:'건기식',cat:'건기식'},
+{e:'🥟',n:'간편식',cat:'간편식'},{e:'🥗',n:'신선',cat:'신선'},{e:'☕',n:'커피',on:1},
+{e:'🥜',n:'견과',on:1},{e:'🧀',n:'치즈',on:1},{e:'🍯',n:'잼·청',on:1},
+{e:'🌾',n:'시리얼',on:0},{e:'🥛',n:'유제품',on:1},{e:'🍞',n:'베이커리',on:1}];
+function hasCat(c){ return cart.some(x=>x.c===c) || orders.some(o=>o.items.some(it=>it.c===c)); }
+function dexOn(d){ return d.cat ? hasCat(d.cat) : d.on; }
+function dexCount(){ return dexc.filter(dexOn).length; }
+let dexMastered=false;
+function renderDex(){
+  const total=dexCount();
+  const smallEl=document.querySelector('#s-my .dex .sec-t h3 small');
+  if(smallEl) smallEl.textContent=`${total}/12 수집`;
+  let targeted=false;
+  document.getElementById('dex').innerHTML=dexc.map(d=>{
+    const on=dexOn(d);
+    let cls=on?'':'lock', flag='';
+    if(!on && d.cat && !targeted){ targeted=true; cls+=' target'; flag='<span class="tgt">다음 목표</span>'; }
+    const prod = d.cat ? P.find(x=>x.c===d.cat) : null;
+    const msg = on ? `${d.n} 도감 획득 완료`
+      : (prod ? `${d.n} 도감 — 「${prod.n}」 담으면 열려요` : `${d.n} 도감 미획득 — 이 카테고리 보물을 담으면 열려요`);
+    return `<div class="dx ${cls}" style="cursor:pointer" onclick="toast('${msg}')">${d.e}<span class="lb">${d.n}</span>${flag}</div>`;
+  }).join('');
+  if(total>=12 && !dexMastered){ dexMastered=true; toast('보물 도감 마스터! 축하 쿠폰 지급 🎫'); }
+}
 
 /* ===== 장바구니 / 결제 ===== */
 let cart=[]; // {im,n,dc,og,qty}
@@ -718,8 +957,9 @@ function updateBadge(){const n=cartCount();document.querySelectorAll('.js-cc').f
 function addCartI(i,btn){addCartObj(P[i]); if(btn){btn.textContent='담김 ✓';btn.classList.add('added');setTimeout(()=>{btn.textContent='담기';btn.classList.remove('added');},1200);} toast('장바구니에 담았어요 🛒');}
 function addCartObj(p){
   const key=p.n; const ex=cart.find(c=>c.n===key);
-  if(ex) ex.qty++; else cart.push({im:p.im,n:p.n,dc:p.dc,og:p.og||p.dc,qty:1});
+  if(ex) ex.qty++; else cart.push({im:p.im,n:p.n,dc:p.dc,og:p.og||p.dc,qty:1,c:p.c||null,box:p.box||false,sub:p.sub||'',bimgs:p.bimgs||null});
   updateBadge();
+  bumpStamp(1);
 }
 function chgQty(idx,delta){cart[idx].qty+=delta; if(cart[idx].qty<=0)cart.splice(idx,1); updateBadge(); renderCart();}
 function rmItem(idx){cart.splice(idx,1); updateBadge(); renderCart();}
@@ -731,13 +971,28 @@ function finalTotal(){return itemsTotal()+shipFee();}
 function renderCart(){
   const body=document.getElementById('cartbody');
   if(!cart.length){ body.innerHTML=`<div class="empty"><div class="eico">🧺</div><p>아직 담은 보물이 없어요.<br>둘러보다 마음에 드는 걸 담아보세요.</p><button class="cta" onclick="go('home')">보물 찾으러 가기</button></div>`; return; }
-  const rows=cart.map((c,i)=>`<div class="cartrow"><img src="img/${c.im}.jpg" alt="">
-    <div class="ci"><div class="n">${c.n}</div>
+  const rows=cart.map((c,i)=>{
+    const thumb = c.box&&c.bimgs&&c.bimgs.length
+      ? `<div class="cbox-th">${c.bimgs.slice(0,5).map(im=>`<img src="img/${im}.jpg" alt="${c.n} 구성">`).join('')}</div>`
+      : `<img src="img/${c.im}.jpg" alt="${c.n}">`;
+    const boxline = c.box
+      ? `<div class="cbox-sub">🧰 ${c.sub} · 정상가 ${won(c.og)} → ${won(c.dc)} · <b>${won(c.og-c.dc)} 아낌</b></div>`
+      : '';
+    return `<div class="cartrow">${thumb}
+    <div class="ci"><div class="n">${c.n}</div>${boxline}
       <div class="p">${won(c.dc)}<span class="og">${won(c.og)}</span></div>
       <div class="qty"><button onclick="chgQty(${i},-1)">−</button><b>${c.qty}</b><button onclick="chgQty(${i},1)">+</button></div>
-    </div><div class="rm" onclick="rmItem(${i})">✕</div></div>`).join('');
-  const free = itemsTotal()>=FREESHIP;
-  body.innerHTML = rows + `<div class="summary">
+    </div><div class="rm" onclick="rmItem(${i})">✕</div></div>`;
+  }).join('');
+  const it=itemsTotal();
+  const free = it>=FREESHIP;
+  const nudge = it>0 ? (it<FREESHIP
+    ? `<div class="notice">🚚 <b>${won(FREESHIP-it)}</b> 더 담으면 무료배송! · ${won(SHIP)} 아껴요<div class="stockbar gold" style="margin-top:8px"><i style="width:${Math.min(100,it/FREESHIP*100)}%"></i></div></div>
+       <div class="sec-t"><h3 style="font-size:16px">이럴 때 같이 담는 보물 <small>문턱만 넘으면 무료배송</small></h3></div>
+       <div class="rail">${[1,6,0].map(i=>railcard(P[i],i,true)).join('')}</div>`
+    : `<div class="notice freeship-ok">🚚 무료배송 적용 ✓ · ${won(SHIP)} 아꼈어요</div>`)
+    : '';
+  body.innerHTML = rows + nudge + `<div class="summary">
     <div class="row"><span>상품 금액</span><b>${won(itemsTotal())}</b></div>
     <div class="row"><span>배송비 ${free?'(3만원↑ 무료)':''}</span><b>${shipFee()?won(shipFee()):'무료'}</b></div>
     <div class="row"><span>정상가 대비 아낀 금액</span><span class="save">− ${won(savedTotal())}</span></div>
@@ -748,7 +1003,7 @@ let payMethod=0;
 function pickPay(el){document.querySelectorAll('#pay label').forEach(l=>l.classList.remove('on'));el.classList.add('on');payMethod=[...el.parentNode.children].indexOf(el);}
 function renderCheckout(){
   document.getElementById('cosummary').innerHTML=cart.map(c=>
-    `<div class="coitem"><img src="img/${c.im}.jpg" alt=""><div class="n">${c.n} <small>· ${c.qty}개</small></div><div class="pp">${won(c.dc*c.qty)}</div></div>`).join('')
+    `<div class="coitem"><img src="img/${c.im}.jpg" alt="${c.n}"><div class="n">${c.n} <small>· ${c.qty}개</small></div><div class="pp">${won(c.dc*c.qty)}</div></div>`).join('')
     + `<div class="coitem" style="border-top:1px solid var(--line);margin-top:6px;padding-top:12px"><div class="n">배송비</div><div class="pp">${shipFee()?won(shipFee()):'무료'}</div></div>`;
   document.getElementById('cofinal').textContent=won(finalTotal());
   document.getElementById('paybtn').textContent=`${won(finalTotal())} 결제하기`;
@@ -756,53 +1011,72 @@ function renderCheckout(){
 function placeOrder(){
   if(!cart.length){toast('장바구니가 비어 있어요');return;}
   const amt=finalTotal(), saved=savedTotal();
+  const kinds=cart.length;
   const no='TR'+String(Date.now()).slice(-8);
   const d=new Date(); const date=`${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
-  orders.unshift({no, date, status:'배송 준비중', items:cart.map(c=>({im:c.im,n:c.n,dc:c.dc,qty:c.qty})), amt, saved});
+  orders.unshift({no, date, status:'배송 준비중', items:cart.map(c=>({im:c.im,n:c.n,dc:c.dc,qty:c.qty,c:c.c||null,box:c.box||false,sub:c.sub||'',bimgs:c.bimgs||null})), amt, saved});
   document.getElementById('ordno').textContent=no;
   document.getElementById('ordamt').textContent=won(amt);
   document.getElementById('ordsave').textContent='− '+won(saved);
   document.getElementById('ordpoint').textContent=Math.round(amt*0.01).toLocaleString('ko-KR')+'P';
+  // 진척·보상 반영 (스탬프·레벨·발견/절약)
+  progress.bought+=kinds; progress.saved+=saved;
+  bumpStamp(1); maybeLevelUp(); renderMyStats();
+  const dr=document.getElementById('donereward');
+  if(dr) dr.innerHTML=`🧰 보물 도감 ${dexCount()}/12 · 스탬프 ${progress.stamps}/10 · 완주까지 ${Math.max(0,10-progress.stamps)}칸`;
   cart=[]; updateBadge(); go('done');
 }
 
 /* ===== 상품 상세 ===== */
 const CAT={granola:'시리얼·간식',cookie:'간식·베이커리',soymilk:'유제품·음료',juice:'음료',nuts:'견과·간식',coffee:'커피',yuja:'청·차',probiotics:'건강기능식품',jelly:'간식',dumpling:'냉동·간편식',oatmeal:'시리얼',cheese:'유제품·냉장'};
 let curIdx=0, detailQty=1;
-const wishSet=new Set();
-function openDetail(i){curIdx=i; detailQty=1; renderDetail(); go('detail');}
+function openDetail(i){curIdx=i; detailQty=1; progress.discovered++; renderDetail(); go('detail'); maybeLevelUp();}
 function dQty(delta){detailQty=Math.max(1,detailQty+delta); document.getElementById('dqtyn').textContent=detailQty; document.getElementById('dbuytot').textContent=won(P[curIdx].dc*detailQty);}
 function addDetail(){const p=P[curIdx]; for(let k=0;k<detailQty;k++) addCartObj(p); toast(`${detailQty}개 담았어요 🛒`);}
 function buyDetail(){const p=P[curIdx]; for(let k=0;k<detailQty;k++) addCartObj(p); go('checkout');}
-function wishToggle(el){const p=P[curIdx]; if(wishSet.has(p.n)){wishSet.delete(p.n);el.classList.remove('on');} else {wishSet.add(p.n);el.classList.add('on'); toast('찜했어요 · 재입고·유사딜 알림 ♥');}}
-function recCard(p,i){return `<div class="rcard" onclick="openDetail(${i})"><div class="ph" style="background:${bg(i+1)}"><img src="img/${p.im}.jpg" alt=""></div><div class="rb"><div class="nm">${p.n}</div><div class="pr"><span class="dc">-${p.d}%</span><span class="fn">${won(p.dc)}</span></div></div></div>`;}
+function wishToggle(el){
+  const on=toggleWish(curIdx);
+  document.querySelectorAll('#s-detail .dimg .heart, #s-detail .dbtns .wish').forEach(x=>{x.classList.toggle('on',on); x.setAttribute('aria-pressed',on?'true':'false');});
+  if(on) toast('찜했어요 · 재입고·유사딜 알림 ♥');
+  updateWishBadge();
+}
+function recCard(p,i){return `<div class="rcard" onclick="openDetail(${i})"><div class="ph" style="background:${bg(i+1)}"><img src="img/${p.im}.jpg" alt="${p.n}"></div><div class="rb"><div class="nm">${p.n}</div><div class="pr"><span class="dc">-${p.d}%</span><span class="fn">${won(p.dc)}</span></div></div></div>`;}
 function renderDetail(){
-  const p=P[curIdx]; const stock=Math.min(100,Math.round((p.left/12)*100)+8); const wished=wishSet.has(p.n);
-  const recs=P.map((x,ix)=>ix).filter(ix=>ix!==curIdx).slice(0,6);
+  const p=P[curIdx]; const sv=stockView(p); const wished=inWish(curIdx);
+  const recs=P.map((x,ix)=>({x,ix})).filter(o=>o.ix!==curIdx).sort((a,b)=>(b.x.c===p.c)-(a.x.c===p.c)).slice(0,6);
+  const pair=recs.find(o=>o.x.c===p.c) || recs[0];
+  const bprice=p.dc+pair.x.dc, bsaved=(p.og-p.dc)+(pair.x.og-pair.x.dc);
   document.getElementById('detailbody').innerHTML=`
   <div class="detailwrap">
     <div class="dimg"><img src="img/${p.im}.jpg" alt="${p.n}"><div class="disc">-${p.d}%</div>
       <div class="heart ${wished?'on':''}" onclick="wishToggle(this)">♥</div></div>
     <div class="dinfo">
-      <div class="dcat">${CAT[p.im]||'떠리 보물'}</div>
+      <div class="dcat">${CATMETA[p.c]||''} ${p.c}</div>
       <div class="dname">${p.n}</div>
       <div class="dprice"><span class="fn">${won(p.dc)}</span><span class="og">${won(p.og)}</span><span class="dc">-${p.d}%</span></div>
-      <div class="dmeta"><span class="tt ${p.left<=3?'urgent':''}">⏱ ${p.tl}</span><span class="tt">🧾 소비기한 임박</span><span class="tt">🚚 오늘출발</span></div>
-      <div class="stockbar"><i style="width:${stock}%"></i></div>
-      <div class="stocklab" style="margin-bottom:14px">${p.left}개 남음 · 빠르게 소진 중</div>
+      <div style="margin:10px 0 2px"><span class="savebadge">${won(p.og-p.dc)} 아꼈어요</span></div>
+      <div class="dmeta"><span class="tt ${p.left<=3?'urgent':''}">⏱ 소비기한 ${p.tl}</span><span class="tt">🧾 ~${p.exp}까지</span><span class="tt">🚚 오늘출발</span></div>
+      ${sv.show?`<div class="stockbar ${sv.barCls}"><i style="width:${sv.w}%"></i></div>`:''}
+      <div class="stocklab ${sv.labCls}" style="margin-bottom:14px">${sv.lab}</div>
       <div class="dnotice">
-        <div class="li"><span>정직 고지</span><div>유통기한이 임박해 정상가보다 크게 낮췄어요. 품질은 정상이며, 받으신 뒤 되도록 빨리 드세요.</div></div>
-        <div class="li" style="margin-top:7px"><span>·</span><div>잔여 소비기한 ${p.tl} · 원산지/알레르기 유발성분 상세 표기 · 냉장/냉동 상품은 신선 배송</div></div>
+        <div class="li"><span>정직 고지</span><div>소비기한이 임박해 정상가보다 크게 낮췄어요. 유통기한이 아닌 소비기한(섭취 안전 잔여) 기준으로 안내드려요. 품질은 정상이며, 받으신 뒤 되도록 빨리 드세요.</div></div>
+        <div class="li" style="margin-top:7px"><span>·</span><div>잔여 소비기한 ${p.tl}(${p.exp}까지) · 원산지 ${p.origin} · 알레르기 ${p.alg}</div></div>
       </div>
       <div class="ddesc">떠리몰이 매일 새로 건져 올리는 임박 보물이에요. 정상가 ${won(p.og)} → <b>${won(p.dc)}</b>. 지금 담지 않으면 오늘의 재고와 함께 사라져요. 계획 없이 둘러보다 만난 이 가격 — 이게 보물찾기의 재미예요.</div>
       <div class="dqtyrow"><span class="k">수량</span><div class="qty"><button onclick="dQty(-1)">−</button><b id="dqtyn">1</b><button onclick="dQty(1)">+</button></div></div>
-      <div class="dbtns"><button class="wish ${wished?'on':''}" onclick="wishToggle(this)">♥</button><button class="cta dark" onclick="addDetail()">장바구니 담기</button></div>
-      <button class="cta" onclick="buyDetail()">바로 구매 · <span id="dbuytot">${won(p.dc)}</span></button>
+      <button class="cta" style="margin-bottom:8px" onclick="buyDetail()">지금 구매 · <span id="dbuytot">${won(p.dc*detailQty)}</span></button>
+      <div class="dbtns"><button class="wish ${wished?'on':''}" onclick="wishToggle(this)">♥</button><button class="cta outline" onclick="addDetail()">담아두기</button></div>
     </div>
   </div>
-  <div class="drec"><div class="sec-t"><h3>이런 보물은 어때요? <small>구조화된 우연</small></h3></div>
-    <div class="rail">${recs.map(ix=>recCard(P[ix],ix)).join('')}</div></div>`;
+  <div class="drec">
+    <div class="notice" style="display:flex;align-items:center;gap:12px;justify-content:space-between;flex-wrap:wrap">
+      <div>🧺 <b>${pair.x.n}</b>와 함께 · 묶음가 <b>${won(bprice)}</b> · ${won(bsaved)} 아낌<br><small>함께 담으면 무료배송에 더 가까워져요</small></div>
+      <button class="rebuy" onclick="addPair(${curIdx},${pair.ix})">2종 함께 담기</button>
+    </div>
+    <div class="sec-t"><h3>이런 보물은 어때요? <small>같은 카테고리 우선</small></h3></div>
+    <div class="rail">${recs.map(o=>recCard(o.x,o.ix)).join('')}</div></div>`;
 }
+function addPair(i,j){ addCartObj(P[i]); addCartObj(P[j]); toast('2종을 함께 담았어요 🛒'); }
 
 /* ===== 주문내역 ===== */
 let orders=[
@@ -816,10 +1090,52 @@ function renderOrders(){
   if(!orders.length){b.innerHTML=`<div class="empty"><div class="eico">🧾</div><p>아직 주문 내역이 없어요.</p><button class="cta" onclick="go('home')">보물 찾으러 가기</button></div>`;return;}
   b.innerHTML=orders.map((o,oi)=>`<div class="ordcard">
     <div class="oh"><div class="od"><b>${o.date}</b> · 주문 ${o.no}</div><span class="stbadge ${stClass(o.status)}">${o.status}</span></div>
-    ${o.items.map(it=>`<div class="ordrow"><img src="img/${it.im}.jpg" alt=""><div class="oi"><div class="n">${it.n}</div><div class="q">${won(it.dc)} · ${it.qty}개</div></div><div class="op">${won(it.dc*it.qty)}</div></div>`).join('')}
+    ${o.items.map(it=>`<div class="ordrow"><img src="img/${it.im}.jpg" alt="${it.n}"><div class="oi"><div class="n">${it.n}</div><div class="q">${it.box&&it.sub?it.sub+' · ':''}${won(it.dc)} · ${it.qty}개</div></div><div class="op">${won(it.dc*it.qty)}</div></div>`).join('')}
     <div class="ordfoot"><div><span class="k">결제금액 </span><span class="v">${won(o.amt)}</span></div><button class="rebuy" onclick="rebuy(${oi})">다시 담기</button></div>
   </div>`).join('');
 }
+
+/* ===== 찜한 보물 ===== */
+function renderWish(){
+  const b=document.getElementById('wishbody');
+  if(!wish.length){ b.innerHTML=`<div class="empty"><div class="eico">💛</div><p>아직 찜한 보물이 없어요.<br>둘러보다 마음에 드는 걸 하트로 찜해보세요.</p><button class="cta" onclick="go('home')">둘러보기</button></div>`; return; }
+  b.innerHTML=`<div class="grid">`+wish.map(i=>card(P[i],i)).join('')+`</div>`;
+}
+
+/* ===== 데일리 신선도: 날짜 스탬프 + 다음 갱신 카운트다운 ===== */
+(function(){const n=new Date(); const el=document.getElementById('daystamp'); if(el) el.textContent=`${n.getMonth()+1}/${n.getDate()} 오늘의 보물`;})();
+function nextRefreshRemaining(){
+  const now=new Date(); const nxt=new Date(now); nxt.setHours(9,0,0,0); if(nxt<=now) nxt.setDate(nxt.getDate()+1);
+  let s=Math.floor((nxt-now)/1000);
+  const h=String(Math.floor(s/3600)).padStart(2,'0'); s%=3600;
+  const m=String(Math.floor(s/60)).padStart(2,'0'); const ss=String(s%60).padStart(2,'0');
+  return `${h}:${m}:${ss}`;
+}
+function tickHomeNext(){ const el=document.getElementById('homenext'); if(el) el.textContent=nextRefreshRemaining(); }
+setInterval(tickHomeNext,1000); tickHomeNext();
+
+/* ===== 접근성: onclick 요소에 역할·키보드·라벨 부여 (기존 onclick 그대로 재사용) ===== */
+const A11Y_LABELS={'🛒':'장바구니','🔔':'새 보물 알림','🔍':'검색','♥':'찜하기','✕':'삭제','−':'수량 줄이기','+':'수량 늘리기'};
+function a11yEnhance(root){
+  (root||document).querySelectorAll('[onclick]:not([data-a11y])').forEach(el=>{
+    el.setAttribute('data-a11y','1');
+    const native=/^(BUTTON|A|INPUT|SELECT|TEXTAREA)$/.test(el.tagName); // 네이티브는 이미 키보드 활성 → 이중클릭 방지
+    if(!native){
+      if(!el.hasAttribute('role')) el.setAttribute('role','button');
+      if(!el.hasAttribute('tabindex')) el.setAttribute('tabindex','0');
+    }
+    const chars=[...(el.textContent||'').trim()];
+    if(!el.getAttribute('aria-label') && chars.length<=2){ const lab=A11Y_LABELS[chars[0]]; if(lab) el.setAttribute('aria-label',lab); }
+    if(el.classList.contains('heart')||el.classList.contains('wish')) el.setAttribute('aria-pressed', el.classList.contains('on')?'true':'false');
+  });
+}
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Enter'&&e.key!==' '&&e.key!=='Spacebar') return;
+  const el=e.target;
+  if(el&&el.getAttribute&&el.getAttribute('role')==='button'&&el.hasAttribute('onclick')){ e.preventDefault(); el.click(); }
+});
+new MutationObserver(()=>a11yEnhance()).observe(document.getElementById('viewport'),{childList:true,subtree:true});
+a11yEnhance();
 
 /* ===== 토스트 ===== */
 let tt=null;
