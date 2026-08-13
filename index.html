@@ -280,6 +280,53 @@ img{max-width:100%;}
 .done .actions{max-width:440px; margin:0 auto; display:flex; gap:10px;}
 .done .actions .cta{flex:1;}
 
+/* 상품 상세 */
+.detailwrap{display:flex; gap:26px; flex-wrap:wrap; align-items:flex-start;}
+.dimg{flex:1 1 320px; position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow); aspect-ratio:1/1; background:var(--gold-soft);}
+.dimg img{width:100%; height:100%; object-fit:cover; display:block;}
+.dimg .disc{position:absolute; top:14px; left:14px; background:var(--red); color:#fff; font-weight:900; font-size:17px; padding:6px 13px; border-radius:12px;}
+.dimg .heart{position:absolute; top:12px; right:12px; width:40px; height:40px; border-radius:50%; background:#ffffffe6; display:grid; place-items:center; font-size:19px; color:#c9c1b6; cursor:pointer;}
+.dimg .heart.on{color:var(--red);}
+.dinfo{flex:1 1 320px; min-width:0;}
+.dinfo .dcat{font-size:12.5px; font-weight:800; color:var(--gold-deep);}
+.dinfo .dname{font-size:24px; font-weight:900; margin:6px 0 12px; line-height:1.3;}
+.dinfo .dprice{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
+.dinfo .dprice .fn{font-size:30px; font-weight:900; letter-spacing:-.02em;}
+.dinfo .dprice .og{font-size:15px; color:#b7ad9f; text-decoration:line-through;}
+.dinfo .dprice .dc{color:var(--red); font-size:19px; font-weight:900;}
+.dmeta{display:flex; gap:7px; margin:14px 0; flex-wrap:wrap;}
+.dmeta .tt{font-size:12px; font-weight:700; padding:5px 10px; border-radius:8px; background:var(--gold-soft); color:var(--gold-deep);}
+.dmeta .tt.urgent{background:#fde4de; color:var(--red);}
+.dnotice{background:#fff; border:1px solid var(--line); border-radius:14px; padding:13px 15px; font-size:13px; color:var(--ink-2); line-height:1.7; margin-bottom:14px;}
+.dnotice b{color:var(--ink);} .dnotice .li{display:flex; gap:8px;} .dnotice .li span{color:var(--gold-deep); font-weight:800;}
+.ddesc{font-size:14px; color:var(--ink); line-height:1.75; margin-bottom:18px;}
+.dqtyrow{display:flex; align-items:center; justify-content:space-between; background:#fff; border-radius:12px; box-shadow:var(--shadow); padding:12px 16px; margin-bottom:14px;}
+.dqtyrow .k{font-weight:700; font-size:14.5px;}
+.dbtns{display:flex; gap:10px; margin-bottom:10px;}
+.dbtns .wish{flex:0 0 58px; border:1.5px solid var(--line); background:#fff; border-radius:14px; font-size:22px; color:#c9c1b6; cursor:pointer;}
+.dbtns .wish.on{color:var(--red); border-color:#f6c9bf;}
+.dbtns .cta{flex:1;}
+.drec{margin-top:8px;}
+
+/* 주문내역 */
+.ordcard{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:16px; margin-bottom:13px;}
+.ordcard .oh{display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--line); margin-bottom:12px;}
+.ordcard .oh .od{font-size:13px; color:var(--ink-2); font-weight:600;} .ordcard .oh .od b{color:var(--ink); font-weight:800;}
+.stbadge{font-size:12px; font-weight:800; padding:5px 11px; border-radius:20px;}
+.stbadge.ready{background:var(--gold-soft); color:var(--gold-deep);}
+.stbadge.ship{background:#e7ecfb; color:var(--navy);}
+.stbadge.done{background:#dcf5ec; color:var(--mint);}
+.ordrow{display:flex; gap:11px; align-items:center; padding:6px 0;}
+.ordrow img{width:52px; height:52px; border-radius:10px; object-fit:cover; flex:0 0 auto;}
+.ordrow .oi{flex:1; min-width:0;} .ordrow .oi .n{font-size:13.5px; font-weight:700;} .ordrow .oi .q{font-size:12.5px; color:var(--ink-2); margin-top:2px;}
+.ordrow .op{font-weight:800; font-size:13.5px;}
+.ordfoot{display:flex; justify-content:space-between; align-items:center; margin-top:12px; padding-top:12px; border-top:1px solid var(--line);}
+.ordfoot .k{font-size:13.5px; color:var(--ink-2);} .ordfoot .v{font-size:17px; font-weight:900;}
+.ordfoot .rebuy{font-size:12.5px; font-weight:800; color:var(--gold-deep); background:var(--gold-soft); border:none; padding:8px 13px; border-radius:20px; cursor:pointer; font-family:inherit;}
+.mymenu{display:flex; gap:11px; margin:0 0 16px;}
+.mymenu .mm{flex:1; background:#fff; border-radius:14px; box-shadow:var(--shadow); padding:15px 10px; text-align:center; cursor:pointer;}
+.mymenu .mm .i{font-size:22px;} .mymenu .mm .l{font-size:12.5px; font-weight:700; margin-top:5px;}
+
 /* 하단 탭바 (모바일) */
 .tabbar{display:none; position:fixed; bottom:0; left:0; right:0; height:64px; background:#fff; border-top:1px solid var(--line); z-index:60; box-shadow:0 -4px 16px rgba(60,45,20,.06);}
 .tabbar .tab{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; font-size:10.5px; color:#b3a998; font-weight:700; cursor:pointer;}
@@ -431,6 +478,11 @@ img{max-width:100%;}
         <div class="s"><div class="v">14.2만</div><div class="k">누적 절약액</div></div>
         <div class="s"><div class="v">23</div><div class="k">발견한 보물</div></div>
       </div>
+      <div class="mymenu">
+        <div class="mm" onclick="go('orders')"><div class="i">🧾</div><div class="l">주문 내역</div></div>
+        <div class="mm" onclick="toast('찜한 보물은 프로토타입에서 생략')"><div class="i">❤️</div><div class="l">찜한 보물</div></div>
+        <div class="mm" onclick="toast('쿠폰함은 프로토타입에서 생략')"><div class="i">🎟️</div><div class="l">쿠폰함</div></div>
+      </div>
       <div class="stampcard"><div class="h"><b>이번 주 보물 헌터 스탬프</b><span>2/10 · 완주 시 5,000P</span></div><div class="stamps" id="stamps"></div></div>
       <div class="dex"><div class="sec-t h"><h3>보물 도감 <small>카테고리별 수집</small></h3></div><div class="dexgrid" id="dex"></div></div>
     </div>
@@ -477,9 +529,25 @@ img{max-width:100%;}
         <div class="r"><span class="k">적립 예정</span><b id="ordpoint">0P</b></div>
       </div>
       <div class="actions">
-        <button class="cta dark" onclick="go('my')">주문 내역 보기</button>
+        <button class="cta dark" onclick="go('orders')">주문 내역 보기</button>
         <button class="cta" onclick="go('home')">계속 보물 찾기</button>
       </div>
+    </div>
+  </section>
+
+  <!-- 상품 상세 -->
+  <section class="screen" id="s-detail">
+    <div class="narrow" style="max-width:900px">
+      <div style="margin-bottom:14px"><a onclick="go('home')" style="font-size:14px;color:var(--ink-2);font-weight:700;cursor:pointer">← 둘러보기로</a></div>
+      <div id="detailbody"></div>
+    </div>
+  </section>
+
+  <!-- 주문내역 -->
+  <section class="screen" id="s-orders">
+    <div class="narrow">
+      <div class="pgt">주문 내역</div>
+      <div id="ordersbody"></div>
     </div>
   </section>
 </main>
@@ -515,11 +583,11 @@ function bg(i){const g=['#FFF3DC','#FDEDE6','#E9F6EF','#EEF1FA','#FBEEF6','#FEF6
 function card(p,i){
   const stock = Math.min(100, Math.round((p.left/12)*100)+8);
   return `<div class="pcard" style="animation-delay:${i*40}ms">
-    <div class="ph" style="background:${bg(i)}"><img src="img/${p.im}.jpg" alt="${p.n}" loading="lazy">
+    <div class="ph" style="background:${bg(i)}" onclick="openDetail(${i})"><img src="img/${p.im}.jpg" alt="${p.n}" loading="lazy">
       <div class="disc">-${p.d}%</div><div class="heart" onclick="heart(this,event)">♥</div>
       ${p.wow?'<div class="wow">이 가격에?</div>':''}</div>
     <div class="body">
-      <div class="nm">${p.n}</div>
+      <div class="nm" onclick="openDetail(${i})" style="cursor:pointer">${p.n}</div>
       <div class="price"><span class="fn">${won(p.dc)}</span><span class="og">${won(p.og)}</span></div>
       <div class="meta"><span class="tt ${p.left<=3?'urgent':''}">⏱ ${p.tl}</span><span class="tt">🧾 소비기한 임박</span></div>
       <div class="stockbar"><i style="width:${stock}%"></i></div>
@@ -528,7 +596,7 @@ function card(p,i){
     </div></div>`;
 }
 function railcard(p,i){
-  return `<div class="rcard" onclick="toast('MD 큐레이션 상세는 생략')"><div class="ph" style="background:${bg(i+2)}"><img src="img/${p.im}.jpg" alt="${p.n}" loading="lazy"></div>
+  return `<div class="rcard" onclick="openDetail(${i+5})"><div class="ph" style="background:${bg(i+2)}"><img src="img/${p.im}.jpg" alt="${p.n}" loading="lazy"></div>
     <div class="rb"><div class="nm">${p.n}</div><div class="pr"><span class="dc">-${p.d}%</span><span class="fn">${won(p.dc)}</span></div></div></div>`;
 }
 document.getElementById('feedgrid').innerHTML = P.map(card).join('');
@@ -546,6 +614,7 @@ function go(s){
   if(s==='pick' && !deckInit) initDeck();
   if(s==='cart') renderCart();
   if(s==='checkout') renderCheckout();
+  if(s==='orders') renderOrders();
 }
 
 /* ===== 스와이프 ===== */
@@ -687,11 +756,69 @@ function renderCheckout(){
 function placeOrder(){
   if(!cart.length){toast('장바구니가 비어 있어요');return;}
   const amt=finalTotal(), saved=savedTotal();
-  document.getElementById('ordno').textContent='TR'+String(Date.now()).slice(-8);
+  const no='TR'+String(Date.now()).slice(-8);
+  const d=new Date(); const date=`${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
+  orders.unshift({no, date, status:'배송 준비중', items:cart.map(c=>({im:c.im,n:c.n,dc:c.dc,qty:c.qty})), amt, saved});
+  document.getElementById('ordno').textContent=no;
   document.getElementById('ordamt').textContent=won(amt);
   document.getElementById('ordsave').textContent='− '+won(saved);
   document.getElementById('ordpoint').textContent=Math.round(amt*0.01).toLocaleString('ko-KR')+'P';
   cart=[]; updateBadge(); go('done');
+}
+
+/* ===== 상품 상세 ===== */
+const CAT={granola:'시리얼·간식',cookie:'간식·베이커리',soymilk:'유제품·음료',juice:'음료',nuts:'견과·간식',coffee:'커피',yuja:'청·차',probiotics:'건강기능식품',jelly:'간식',dumpling:'냉동·간편식',oatmeal:'시리얼',cheese:'유제품·냉장'};
+let curIdx=0, detailQty=1;
+const wishSet=new Set();
+function openDetail(i){curIdx=i; detailQty=1; renderDetail(); go('detail');}
+function dQty(delta){detailQty=Math.max(1,detailQty+delta); document.getElementById('dqtyn').textContent=detailQty; document.getElementById('dbuytot').textContent=won(P[curIdx].dc*detailQty);}
+function addDetail(){const p=P[curIdx]; for(let k=0;k<detailQty;k++) addCartObj(p); toast(`${detailQty}개 담았어요 🛒`);}
+function buyDetail(){const p=P[curIdx]; for(let k=0;k<detailQty;k++) addCartObj(p); go('checkout');}
+function wishToggle(el){const p=P[curIdx]; if(wishSet.has(p.n)){wishSet.delete(p.n);el.classList.remove('on');} else {wishSet.add(p.n);el.classList.add('on'); toast('찜했어요 · 재입고·유사딜 알림 ♥');}}
+function recCard(p,i){return `<div class="rcard" onclick="openDetail(${i})"><div class="ph" style="background:${bg(i+1)}"><img src="img/${p.im}.jpg" alt=""></div><div class="rb"><div class="nm">${p.n}</div><div class="pr"><span class="dc">-${p.d}%</span><span class="fn">${won(p.dc)}</span></div></div></div>`;}
+function renderDetail(){
+  const p=P[curIdx]; const stock=Math.min(100,Math.round((p.left/12)*100)+8); const wished=wishSet.has(p.n);
+  const recs=P.map((x,ix)=>ix).filter(ix=>ix!==curIdx).slice(0,6);
+  document.getElementById('detailbody').innerHTML=`
+  <div class="detailwrap">
+    <div class="dimg"><img src="img/${p.im}.jpg" alt="${p.n}"><div class="disc">-${p.d}%</div>
+      <div class="heart ${wished?'on':''}" onclick="wishToggle(this)">♥</div></div>
+    <div class="dinfo">
+      <div class="dcat">${CAT[p.im]||'떠리 보물'}</div>
+      <div class="dname">${p.n}</div>
+      <div class="dprice"><span class="fn">${won(p.dc)}</span><span class="og">${won(p.og)}</span><span class="dc">-${p.d}%</span></div>
+      <div class="dmeta"><span class="tt ${p.left<=3?'urgent':''}">⏱ ${p.tl}</span><span class="tt">🧾 소비기한 임박</span><span class="tt">🚚 오늘출발</span></div>
+      <div class="stockbar"><i style="width:${stock}%"></i></div>
+      <div class="stocklab" style="margin-bottom:14px">${p.left}개 남음 · 빠르게 소진 중</div>
+      <div class="dnotice">
+        <div class="li"><span>정직 고지</span><div>유통기한이 임박해 정상가보다 크게 낮췄어요. 품질은 정상이며, 받으신 뒤 되도록 빨리 드세요.</div></div>
+        <div class="li" style="margin-top:7px"><span>·</span><div>잔여 소비기한 ${p.tl} · 원산지/알레르기 유발성분 상세 표기 · 냉장/냉동 상품은 신선 배송</div></div>
+      </div>
+      <div class="ddesc">떠리몰이 매일 새로 건져 올리는 임박 보물이에요. 정상가 ${won(p.og)} → <b>${won(p.dc)}</b>. 지금 담지 않으면 오늘의 재고와 함께 사라져요. 계획 없이 둘러보다 만난 이 가격 — 이게 보물찾기의 재미예요.</div>
+      <div class="dqtyrow"><span class="k">수량</span><div class="qty"><button onclick="dQty(-1)">−</button><b id="dqtyn">1</b><button onclick="dQty(1)">+</button></div></div>
+      <div class="dbtns"><button class="wish ${wished?'on':''}" onclick="wishToggle(this)">♥</button><button class="cta dark" onclick="addDetail()">장바구니 담기</button></div>
+      <button class="cta" onclick="buyDetail()">바로 구매 · <span id="dbuytot">${won(p.dc)}</span></button>
+    </div>
+  </div>
+  <div class="drec"><div class="sec-t"><h3>이런 보물은 어때요? <small>구조화된 우연</small></h3></div>
+    <div class="rail">${recs.map(ix=>recCard(P[ix],ix)).join('')}</div></div>`;
+}
+
+/* ===== 주문내역 ===== */
+let orders=[
+ {no:'TR20260812', date:'2026.08.12', status:'배송중', items:[{im:'dumpling',n:'손만두 모둠 1.2kg (냉동)',dc:6900,qty:2},{im:'juice',n:'제주 감귤주스 1L x3',dc:6200,qty:1}], amt:23000, saved:22100},
+ {no:'TR20260810', date:'2026.08.10', status:'배송완료', items:[{im:'cheese',n:'수제 브리치즈 200g (냉장)',dc:4400,qty:1},{im:'coffee',n:'스페셜티 드립백 20개',dc:8100,qty:1}], amt:15500, saved:17400},
+];
+function stClass(s){return s.indexOf('완료')>=0?'done':(s.indexOf('배송중')>=0?'ship':'ready');}
+function rebuy(oi){orders[oi].items.forEach(it=>addCartObj({im:it.im,n:it.n,dc:it.dc,og:it.dc})); toast('장바구니에 다시 담았어요 🛒'); go('cart');}
+function renderOrders(){
+  const b=document.getElementById('ordersbody');
+  if(!orders.length){b.innerHTML=`<div class="empty"><div class="eico">🧾</div><p>아직 주문 내역이 없어요.</p><button class="cta" onclick="go('home')">보물 찾으러 가기</button></div>`;return;}
+  b.innerHTML=orders.map((o,oi)=>`<div class="ordcard">
+    <div class="oh"><div class="od"><b>${o.date}</b> · 주문 ${o.no}</div><span class="stbadge ${stClass(o.status)}">${o.status}</span></div>
+    ${o.items.map(it=>`<div class="ordrow"><img src="img/${it.im}.jpg" alt=""><div class="oi"><div class="n">${it.n}</div><div class="q">${won(it.dc)} · ${it.qty}개</div></div><div class="op">${won(it.dc*it.qty)}</div></div>`).join('')}
+    <div class="ordfoot"><div><span class="k">결제금액 </span><span class="v">${won(o.amt)}</span></div><button class="rebuy" onclick="rebuy(${oi})">다시 담기</button></div>
+  </div>`).join('');
 }
 
 /* ===== 토스트 ===== */
