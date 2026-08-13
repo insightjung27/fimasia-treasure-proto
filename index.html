@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>떠리 보물찾기 — 발견형 커머스 프로토타입</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+:root{
+  --gold:#F2A20C; --gold-deep:#E4890B; --gold-soft:#FFF3DC;
+  --ink:#2A2521; --ink-2:#6B6259; --line:#EFE7DA;
+  --red:#E64A2E; --mint:#12A87E; --navy:#243044;
+  --bg:#FBF6EE; --card:#FFFFFF; --shadow:0 8px 30px rgba(60,45,20,.10);
+}
+*{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
+html,body{height:100%;}
+body{
+  font-family:'Pretendard',system-ui,sans-serif; color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 15% -5%, #fbe6bd55, transparent 60%),
+    radial-gradient(1000px 700px at 110% 10%, #f7d9c855, transparent 55%),
+    #EFE6D7;
+  display:flex; align-items:center; justify-content:center; min-height:100vh; padding:24px 12px;
+}
+/* ===== 데스크톱: 두 폰 나란히 + 설명 ===== */
+.stage{display:flex; gap:40px; align-items:center; flex-wrap:wrap; justify-content:center;}
+.pitch{max-width:340px;}
+.pitch .brand{font-size:15px; font-weight:800; letter-spacing:.02em; color:var(--gold-deep);}
+.pitch h1{font-size:34px; line-height:1.18; font-weight:900; margin:10px 0 14px; letter-spacing:-.02em;}
+.pitch h1 b{color:var(--red);}
+.pitch p{font-size:15px; line-height:1.7; color:var(--ink-2); margin-bottom:16px;}
+.pitch .feat{display:flex; gap:9px; align-items:flex-start; font-size:13.5px; margin:9px 0; color:var(--ink);}
+.pitch .feat .n{flex:0 0 22px; height:22px; border-radius:50%; background:var(--gold); color:#fff; font-weight:800; font-size:12px; display:grid; place-items:center; margin-top:1px;}
+.pitch .tag{display:inline-block; margin-top:12px; font-size:12px; color:var(--ink-2); background:#fff; border:1px solid var(--line); padding:6px 11px; border-radius:20px;}
+
+/* ===== 폰 프레임 ===== */
+.phone{
+  width:390px; height:800px; max-height:calc(100vh - 48px);
+  background:var(--bg); border-radius:44px; position:relative; overflow:hidden;
+  box-shadow:0 30px 70px rgba(40,30,10,.28), 0 0 0 11px #1c1a17, 0 0 0 13px #33302b;
+  display:flex; flex-direction:column;
+}
+.notch{position:absolute; top:0; left:50%; transform:translateX(-50%); width:150px; height:26px; background:#1c1a17; border-radius:0 0 18px 18px; z-index:60;}
+.statusbar{height:44px; flex:0 0 44px; display:flex; align-items:center; justify-content:space-between; padding:0 22px; font-size:13px; font-weight:700; color:var(--ink); z-index:50;}
+.statusbar .r{display:flex; gap:6px; align-items:center; font-size:12px;}
+
+/* 앱 헤더 */
+.appbar{flex:0 0 auto; padding:6px 18px 10px; display:flex; align-items:center; justify-content:space-between; gap:10px; background:transparent; z-index:40;}
+.logo{display:flex; align-items:center; gap:8px; font-weight:900; font-size:19px; letter-spacing:-.01em;}
+.logo .chest{font-size:22px; filter:drop-shadow(0 2px 2px rgba(0,0,0,.12));}
+.logo b{color:var(--gold-deep);}
+.appbar .ico{width:38px; height:38px; border-radius:50%; background:#fff; border:1px solid var(--line); display:grid; place-items:center; font-size:16px; color:var(--ink-2); box-shadow:var(--shadow);}
+.appbar .ico.small{transform:scale(.86); opacity:.9;}
+
+/* 스크롤 영역 */
+.viewport{flex:1 1 auto; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; position:relative;}
+.viewport::-webkit-scrollbar{display:none;}
+.screen{display:none; padding:4px 16px 24px; animation:fade .28s ease;}
+.screen.active{display:block;}
+@keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+
+/* 카운터 배너 */
+.counter{
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep)); color:#fff; border-radius:18px;
+  padding:15px 18px; display:flex; align-items:center; gap:13px; box-shadow:0 10px 24px rgba(228,137,11,.32);
+  margin:6px 2px 14px; position:relative; overflow:hidden;
+}
+.counter::after{content:""; position:absolute; right:-30px; top:-30px; width:120px; height:120px; background:radial-gradient(circle,#ffffff44,transparent 70%);}
+.counter .big{font-size:30px;}
+.counter .txt{line-height:1.32;}
+.counter .txt b{font-size:19px; font-weight:900;}
+.counter .txt span{font-size:12.5px; opacity:.92; display:block;}
+
+/* 토글 chips */
+.toggle{display:flex; gap:8px; margin:0 2px 12px;}
+.chip{padding:8px 16px; border-radius:20px; font-size:13.5px; font-weight:700; background:#fff; border:1px solid var(--line); color:var(--ink-2);}
+.chip.on{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+/* 섹션 타이틀 */
+.sec-t{display:flex; align-items:center; justify-content:space-between; margin:20px 2px 10px;}
+.sec-t h3{font-size:17px; font-weight:900; letter-spacing:-.01em;}
+.sec-t h3 small{font-weight:600; color:var(--ink-2); font-size:12.5px; margin-left:6px;}
+.sec-t a{font-size:12.5px; color:var(--ink-2); font-weight:600;}
+
+/* MD 큐레이션 가로 레인 */
+.rail{display:flex; gap:12px; overflow-x:auto; padding:2px 2px 8px; margin:0 -16px; padding-left:16px; padding-right:16px;}
+.rail::-webkit-scrollbar{display:none;}
+.rail .rcard{flex:0 0 150px; background:var(--card); border-radius:16px; box-shadow:var(--shadow); overflow:hidden;}
+.rail .rcard .ph{height:104px; display:grid; place-items:center; font-size:52px;}
+.rail .rcard .rb{padding:9px 11px 11px;}
+.rail .rcard .nm{font-size:13px; font-weight:700; line-height:1.3; height:34px; overflow:hidden;}
+.rail .rcard .pr{margin-top:5px; display:flex; align-items:baseline; gap:6px;}
+.rail .rcard .pr .dc{color:var(--red); font-weight:900; font-size:14px;}
+.rail .rcard .pr .fn{font-weight:900; font-size:15px;}
+
+/* 상품 그리드 */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:13px;}
+.pcard{background:var(--card); border-radius:16px; box-shadow:var(--shadow); overflow:hidden; position:relative; animation:pop .4s ease both;}
+@keyframes pop{from{opacity:0; transform:scale(.96);} to{opacity:1; transform:none;}}
+.pcard .ph{height:118px; display:grid; place-items:center; font-size:58px; position:relative;}
+.pcard .disc{position:absolute; top:9px; left:9px; background:var(--red); color:#fff; font-weight:900; font-size:14px; padding:4px 8px; border-radius:10px; box-shadow:0 3px 8px rgba(230,74,46,.4);}
+.pcard .heart{position:absolute; top:8px; right:8px; width:31px; height:31px; border-radius:50%; background:#ffffffdd; display:grid; place-items:center; font-size:15px; color:#c9c1b6;}
+.pcard .heart.on{color:var(--red);}
+.pcard .wow{position:absolute; bottom:8px; left:8px; background:var(--navy); color:#ffe9a8; font-size:10.5px; font-weight:800; padding:3px 7px; border-radius:8px;}
+.pcard .body{padding:10px 11px 12px;}
+.pcard .nm{font-size:13px; font-weight:700; line-height:1.32; height:34px; overflow:hidden;}
+.pcard .price{display:flex; align-items:baseline; gap:6px; margin-top:6px;}
+.pcard .price .dc{color:var(--red); font-weight:900; font-size:15px;}
+.pcard .price .fn{font-weight:900; font-size:16px; letter-spacing:-.02em;}
+.pcard .price .og{font-size:11.5px; color:#b7ad9f; text-decoration:line-through;}
+.pcard .meta{display:flex; gap:6px; margin-top:9px; flex-wrap:wrap;}
+.pcard .tt{font-size:10.5px; font-weight:700; padding:3px 7px; border-radius:7px; background:var(--gold-soft); color:var(--gold-deep);}
+.pcard .tt.urgent{background:#fde4de; color:var(--red);}
+.stockbar{height:5px; border-radius:4px; background:#efe7da; margin-top:9px; overflow:hidden;}
+.stockbar i{display:block; height:100%; background:linear-gradient(90deg,var(--red),#ff7d5e); border-radius:4px;}
+.stocklab{font-size:10.5px; color:var(--ink-2); margin-top:5px; font-weight:600;}
+
+/* ===== 스와이프(오늘의 픽) ===== */
+.deckwrap{padding:8px 4px;}
+.deckhead{display:flex; justify-content:space-between; align-items:center; margin:6px 4px 14px;}
+.deckhead .t{font-size:20px; font-weight:900;}
+.deckhead .cnt{font-size:13px; color:var(--ink-2); font-weight:700;}
+.deckhead .cnt b{color:var(--gold-deep);}
+.deckstack{position:relative; height:430px; margin:6px 6px 8px;}
+.swcard{
+  position:absolute; inset:0; background:var(--card); border-radius:26px; box-shadow:0 18px 40px rgba(40,30,10,.18);
+  overflow:hidden; display:flex; flex-direction:column; will-change:transform; touch-action:none;
+}
+.swcard .ph{flex:1 1 auto; display:grid; place-items:center; font-size:130px; position:relative;}
+.swcard .disc{position:absolute; top:16px; left:16px; background:var(--red); color:#fff; font-weight:900; font-size:17px; padding:6px 12px; border-radius:13px;}
+.swcard .tstamp{position:absolute; top:16px; right:16px; background:#ffffffdd; color:var(--red); font-weight:800; font-size:12.5px; padding:5px 11px; border-radius:20px;}
+.swcard .info{flex:0 0 auto; padding:16px 20px 20px; border-top:1px solid var(--line);}
+.swcard .info .nm{font-size:19px; font-weight:800;}
+.swcard .info .pr{margin-top:7px; display:flex; align-items:baseline; gap:9px;}
+.swcard .info .pr .fn{font-size:24px; font-weight:900;}
+.swcard .info .pr .og{font-size:14px; color:#b7ad9f; text-decoration:line-through;}
+.swcard .info .pr .dc{color:var(--red); font-weight:900; font-size:17px;}
+.stamp{position:absolute; top:28px; font-size:30px; font-weight:900; padding:6px 16px; border-radius:12px; border:4px solid; opacity:0; transform:rotate(-14deg);}
+.stamp.like{right:22px; color:var(--mint); border-color:var(--mint);}
+.stamp.nope{left:22px; color:#9aa; border-color:#9aa;}
+.deckbtns{display:flex; justify-content:center; gap:26px; margin-top:8px;}
+.deckbtns button{width:66px; height:66px; border-radius:50%; border:none; font-size:27px; box-shadow:var(--shadow); background:#fff;}
+.deckbtns .pass{color:#9aa;}
+.deckbtns .like{background:linear-gradient(135deg,var(--mint),#0c8b66); color:#fff;}
+.deckhint{text-align:center; font-size:12px; color:var(--ink-2); margin-top:12px;}
+.recap{display:none; padding:16px 6px; text-align:center;}
+.recap.on{display:block; animation:fade .3s;}
+.recap h3{font-size:22px; font-weight:900; margin-bottom:4px;}
+.recap p{color:var(--ink-2); font-size:13.5px; margin-bottom:16px;}
+.recap .rlist{text-align:left; background:#fff; border-radius:16px; box-shadow:var(--shadow); overflow:hidden; margin-bottom:16px;}
+.recap .rrow{display:flex; align-items:center; gap:12px; padding:12px 14px; border-bottom:1px solid var(--line);}
+.recap .rrow:last-child{border-bottom:none;}
+.recap .rrow .e{font-size:30px;}
+.recap .rrow .m{flex:1;}
+.recap .rrow .m .n{font-size:14px; font-weight:700;}
+.recap .rrow .m .p{font-size:13px; color:var(--red); font-weight:800;}
+
+/* CTA */
+.cta{display:block; width:100%; padding:16px; border:none; border-radius:16px; background:var(--gold); color:#fff; font-size:16px; font-weight:900; box-shadow:0 10px 22px rgba(228,137,11,.32); font-family:inherit;}
+.cta.dark{background:var(--ink);}
+.cta:active{transform:translateY(1px);}
+
+/* ===== 보물상자 ===== */
+.boxthemes{display:flex; gap:8px; margin:6px 2px 16px;}
+.boxthemes .chip{flex:1; text-align:center;}
+.boxcard{background:linear-gradient(160deg,#2e3a52,#1c2536); border-radius:24px; padding:26px 22px; color:#fff; text-align:center; box-shadow:0 18px 40px rgba(20,25,40,.35); position:relative; overflow:hidden;}
+.boxcard::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 50% 30%, #f2a20c33, transparent 60%);}
+.chest-big{font-size:96px; display:inline-block; filter:drop-shadow(0 8px 12px rgba(0,0,0,.35)); position:relative;}
+.chest-big.shake{animation:shake .5s ease 2;}
+@keyframes shake{0%,100%{transform:rotate(0)} 25%{transform:rotate(-9deg) scale(1.04)} 75%{transform:rotate(9deg) scale(1.04)}}
+.boxcard .save{display:inline-block; margin:8px 0 2px; background:var(--gold); color:#241a00; font-weight:900; font-size:14px; padding:6px 13px; border-radius:20px;}
+.boxcard h2{font-size:23px; font-weight:900; margin:12px 0 4px;}
+.boxcard .sub{font-size:13px; opacity:.82; line-height:1.5;}
+.notice{background:#fff; border:1px solid var(--line); border-radius:14px; padding:13px 15px; margin:16px 2px; font-size:12.5px; color:var(--ink-2); line-height:1.6;}
+.notice b{color:var(--ink);}
+.reveal{display:none;}
+.reveal.on{display:block; animation:fade .35s;}
+.reveal .rgrid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:8px 2px 16px;}
+.reveal .ritem{background:#fff; border-radius:14px; box-shadow:var(--shadow); padding:14px; text-align:center; animation:reveal .5s ease both;}
+@keyframes reveal{from{opacity:0; transform:translateY(14px) scale(.9);} to{opacity:1; transform:none;}}
+.reveal .ritem .e{font-size:44px;}
+.reveal .ritem .n{font-size:12.5px; font-weight:700; margin-top:6px; line-height:1.3;}
+.reveal .ritem .v{font-size:12px; color:var(--red); font-weight:800; margin-top:3px;}
+.reveal .total{text-align:center; background:var(--gold-soft); border-radius:14px; padding:14px; margin:0 2px 16px; font-weight:800; color:var(--gold-deep); font-size:15px;}
+
+/* ===== 지금 뜬 보물 ===== */
+.flashhero{background:linear-gradient(135deg,#e64a2e,#ff7d3a); border-radius:22px; padding:20px; color:#fff; text-align:center; box-shadow:0 14px 32px rgba(230,74,46,.32); position:relative; overflow:hidden;}
+.flashhero .lab{font-size:13px; font-weight:800; opacity:.95; letter-spacing:.02em;}
+.flashhero .clock{font-size:46px; font-weight:900; letter-spacing:.04em; margin:4px 0; font-variant-numeric:tabular-nums;}
+.flashhero .lab2{font-size:12.5px; opacity:.9;}
+.flashdeal{background:#fff; border-radius:20px; box-shadow:var(--shadow); overflow:hidden; margin-top:16px;}
+.flashdeal .ph{height:150px; display:grid; place-items:center; font-size:80px; background:var(--gold-soft); position:relative;}
+.flashdeal .disc{position:absolute; top:12px; left:12px; background:var(--red); color:#fff; font-weight:900; font-size:16px; padding:5px 11px; border-radius:11px;}
+.flashdeal .fb{padding:15px 16px 18px;}
+.flashdeal .nm{font-size:16px; font-weight:800;}
+.flashdeal .pr{display:flex; align-items:baseline; gap:9px; margin-top:6px;}
+.flashdeal .pr .fn{font-size:23px; font-weight:900;}
+.flashdeal .pr .og{font-size:13px; color:#b7ad9f; text-decoration:line-through;}
+.drain{height:9px; border-radius:6px; background:#efe7da; margin:14px 0 6px; overflow:hidden;}
+.drain i{display:block; height:100%; background:linear-gradient(90deg,var(--red),#ff9a6a); transition:width .8s ease;}
+.drainlab{font-size:12px; font-weight:700; color:var(--red);}
+.ticker{margin-top:14px; height:38px; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; position:relative;}
+.ticker .t{position:absolute; width:100%; padding:10px 14px; font-size:12.5px; color:var(--ink); font-weight:600; animation:tick 2.6s ease;}
+@keyframes tick{0%{transform:translateY(38px); opacity:0} 15%,85%{transform:translateY(0); opacity:1} 100%{transform:translateY(-38px); opacity:0}}
+.ticker .t .b{color:var(--gold-deep); font-weight:800;}
+
+/* ===== 마이(도감·스탬프) ===== */
+.mytop{background:linear-gradient(135deg,var(--navy),#33425e); border-radius:20px; padding:18px; color:#fff; display:flex; gap:14px; align-items:center; box-shadow:var(--shadow);}
+.mytop .av{width:56px; height:56px; border-radius:50%; background:var(--gold); display:grid; place-items:center; font-size:28px;}
+.mytop .mi{flex:1;}
+.mytop .mi .nm{font-size:17px; font-weight:900;}
+.mytop .mi .lv{font-size:12.5px; opacity:.85; margin-top:2px;}
+.summ{display:flex; gap:11px; margin:14px 0;}
+.summ .s{flex:1; background:#fff; border-radius:15px; box-shadow:var(--shadow); padding:14px; text-align:center;}
+.summ .s .v{font-size:21px; font-weight:900; color:var(--gold-deep);}
+.summ .s .k{font-size:11.5px; color:var(--ink-2); margin-top:3px; font-weight:600;}
+.stampcard{background:#fff; border-radius:18px; box-shadow:var(--shadow); padding:16px; margin-bottom:16px;}
+.stampcard .h{display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;}
+.stampcard .h b{font-size:15px; font-weight:900;}
+.stampcard .h span{font-size:12px; color:var(--ink-2); font-weight:700;}
+.stamps{display:grid; grid-template-columns:repeat(5,1fr); gap:9px;}
+.st{aspect-ratio:1; border-radius:12px; background:#f5eee2; display:grid; place-items:center; font-size:22px; color:#cdbfa8; border:2px dashed #e2d6c0;}
+.st.done{background:var(--gold-soft); color:var(--gold-deep); border:2px solid var(--gold); }
+.st.next{border:2px solid var(--gold); color:var(--gold-deep); background:#fff;}
+.dex .h{margin:18px 2px 10px;}
+.dexgrid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
+.dx{aspect-ratio:1; border-radius:14px; background:#fff; box-shadow:var(--shadow); display:grid; place-items:center; font-size:30px; position:relative;}
+.dx.lock{filter:grayscale(1) opacity(.32);}
+.dx .lb{position:absolute; bottom:5px; font-size:9px; font-weight:700; color:var(--ink-2);}
+
+/* 하단 탭바 */
+.tabbar{flex:0 0 auto; height:66px; background:#fff; border-top:1px solid var(--line); display:flex; z-index:40; box-shadow:0 -4px 16px rgba(60,45,20,.05);}
+.tab{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; font-size:10.5px; color:#b3a998; font-weight:700;}
+.tab .ti{font-size:20px; filter:grayscale(.4); opacity:.6;}
+.tab.on{color:var(--gold-deep);}
+.tab.on .ti{filter:none; opacity:1; transform:translateY(-1px);}
+
+/* 토스트 */
+.toast{position:absolute; bottom:82px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--ink); color:#fff; padding:11px 18px; border-radius:24px; font-size:13px; font-weight:700; opacity:0; transition:.3s; z-index:70; box-shadow:0 8px 20px rgba(0,0,0,.25); white-space:nowrap;}
+.toast.on{opacity:1; transform:translateX(-50%) translateY(0);}
+
+@media (max-width:900px){ .pitch{display:none;} body{padding:0;} .phone{width:100%; height:100vh; max-height:100vh; border-radius:0; box-shadow:none;} .notch{display:none;} }
+</style>
+</head>
+<body>
+<div class="stage">
+  <!-- 데스크톱 좌측 설명 -->
+  <aside class="pitch">
+    <div class="brand">핌아시아 · 떠리몰 발견형 커머스 제안</div>
+    <h1>둘러보다 <b>건지는</b><br>보물찾기 커머스</h1>
+    <p>검색으로 목적구매하는 몰에서, 목적 없이 둘러보다 우연히 보물을 건지는 놀이터로. 매일 바뀌는 임박 재고가 최고의 발견 자산입니다.</p>
+    <div class="feat"><span class="n">1</span><span><b>오늘의 보물 피드</b> — 검색 대신 스크롤로 발견</span></div>
+    <div class="feat"><span class="n">2</span><span><b>보물상자</b> — 무엇이 올지 모르는 미스터리 번들</span></div>
+    <div class="feat"><span class="n">3</span><span><b>스와이프 탐색</b> — 넘기며 찜하는 무목적 브라우징</span></div>
+    <div class="feat"><span class="n">4</span><span><b>지금 뜬 보물</b> — 정직한 실시간 반짝딜</span></div>
+    <div class="feat"><span class="n">5</span><span><b>보물 도감·스탬프</b> — 살 게 없어도 다시 오게</span></div>
+    <span class="tag">프로토타입 · 하단 탭으로 5개 화면 체험</span>
+  </aside>
+
+  <!-- 폰 -->
+  <div class="phone">
+    <div class="notch"></div>
+    <div class="statusbar"><span>9:41</span><span class="r">보물찾기 ⚡ 100%</span></div>
+    <div class="appbar">
+      <div class="logo"><span class="chest">🧰</span>떠리 <b>보물찾기</b></div>
+      <div style="display:flex; gap:8px;">
+        <div class="ico small" title="발견이 기본값 — 검색은 축소">🔍</div>
+        <div class="ico">🔔</div>
+      </div>
+    </div>
+
+    <div class="viewport" id="viewport">
+      <!-- 화면 1: 홈 피드 -->
+      <section class="screen active" id="s-home">
+        <div class="counter">
+          <div class="big">🧭</div>
+          <div class="txt"><b>오늘 새로 뜬 보물 <span id="newcount" style="display:inline">12</span>개</b><span>매일 바뀌는 임박 재고 — 지금 안 건지면 사라져요</span></div>
+        </div>
+        <div class="toggle">
+          <div class="chip on">✨ 추천</div>
+          <div class="chip">전체</div>
+          <div class="chip">🍪 간식</div>
+          <div class="chip">🥗 신선</div>
+          <div class="chip">💊 건기식</div>
+        </div>
+        <div class="sec-t"><h3>MD가 오늘 건진 보물 <small>사람이 고른 큐레이션</small></h3></div>
+        <div class="rail" id="rail"></div>
+        <div class="sec-t"><h3>취향 근처의 의외성 <small>구조화된 우연</small></h3><a>더보기</a></div>
+        <div class="grid" id="feedgrid"></div>
+      </section>
+
+      <!-- 화면 2: 스와이프 -->
+      <section class="screen" id="s-pick">
+        <div class="deckwrap">
+          <div class="deckhead">
+            <div class="t">오늘의 픽</div>
+            <div class="cnt">남은 <b id="deckleft">8</b> · 찜 <b id="deckliked">0</b></div>
+          </div>
+          <div class="deckstack" id="deckstack"></div>
+          <div class="deckbtns">
+            <button class="pass" onclick="swipe('left')">✕</button>
+            <button class="like" onclick="swipe('right')">♥</button>
+          </div>
+          <div class="deckhint">← 넘겨서 패스 · 찜하려면 ♥ 또는 오른쪽으로 →</div>
+        </div>
+        <div class="recap" id="recap">
+          <h3>오늘 <span id="recapn">0</span>개 건졌어요 🧰</h3>
+          <p>마감 임박순으로 정리했어요. 사라지기 전에 담아두세요.</p>
+          <div class="rlist" id="rlist"></div>
+          <button class="cta" onclick="go('home')">장바구니에 모두 담기</button>
+        </div>
+      </section>
+
+      <!-- 화면 3: 보물상자 -->
+      <section class="screen" id="s-box">
+        <div class="boxthemes">
+          <div class="chip on">🍪 간식 상자</div>
+          <div class="chip">🧴 생활 상자</div>
+          <div class="chip">💊 건기식 상자</div>
+        </div>
+        <div id="boxpick">
+          <div class="boxcard">
+            <span class="chest-big" id="chest">🎁</span>
+            <div><span class="save">정상가 대비 최소 42% 보장</span></div>
+            <h2>간식 보물상자</h2>
+            <div class="sub">과자·음료·베이커리 임박 재고를<br>랜덤 5종으로 구성 — 무엇이 올지는 열어봐야 압니다</div>
+          </div>
+          <div class="notice">
+            <b>정직 고지</b> · 잔여 소비기한 최소 <b>D-12</b> · 구성 5종(간식 카테고리) · 알레르기 유발성분 표기 포함 · 실물 구성은 재고에 따라 달라질 수 있어요.
+          </div>
+          <button class="cta dark" onclick="openBox()">🔓 보물상자 열기 · 14,900원</button>
+        </div>
+        <div class="reveal" id="reveal">
+          <div class="sec-t"><h3>짜잔! 오늘의 보물상자 🎉</h3></div>
+          <div class="rgrid" id="revealgrid"></div>
+          <div class="total" id="revealtotal"></div>
+          <button class="cta" onclick="resetBox()">다른 상자 또 열어보기</button>
+        </div>
+      </section>
+
+      <!-- 화면 4: 지금 뜬 보물 -->
+      <section class="screen" id="s-flash">
+        <div class="flashhero">
+          <div class="lab">⚡ 지금 뜬 보물 · 반짝딜</div>
+          <div class="clock" id="clock">04:59</div>
+          <div class="lab2">이 시간이 지나면 원래 가격으로 돌아가요</div>
+        </div>
+        <div class="flashdeal">
+          <div class="ph">🧀<div class="disc">-63%</div></div>
+          <div class="fb">
+            <div class="nm">수제 브리치즈 200g (냉장)</div>
+            <div class="pr"><span class="fn">4,400원</span><span class="og">11,900원</span></div>
+            <div class="drain"><i id="drain" style="width:38%"></i></div>
+            <div class="drainlab" id="drainlab">🔥 62개 소진 · 38개 남음</div>
+            <div class="ticker"><div class="t" id="tickt">방금 <span class="b">김**님</span>이 담았어요</div></div>
+            <button class="cta" style="margin-top:14px" onclick="toast('장바구니에 담았어요! 🧀')">지금 담기</button>
+          </div>
+        </div>
+        <div class="sec-t"><h3>다음 보물은 랜덤 시간에 <small>언제 뜰지 몰라요</small></h3></div>
+        <div class="notice">다음 반짝딜까지 <b id="nextdrop">07:32</b> · 알림 켜두면 새 보물이 뜰 때 가장 먼저 알려드려요.</div>
+        <button class="cta dark" onclick="toast('반짝딜 알림을 켰어요 🔔')">🔔 반짝딜 알림 받기</button>
+      </section>
+
+      <!-- 화면 5: 마이(도감·스탬프) -->
+      <section class="screen" id="s-my">
+        <div class="mytop">
+          <div class="av">🧭</div>
+          <div class="mi"><div class="nm">보물헌터 정치성님</div><div class="lv">Lv.4 발견가 · 이번 주 7개 발견</div></div>
+        </div>
+        <div class="summ">
+          <div class="s"><div class="v">66%</div><div class="k">재구매율</div></div>
+          <div class="s"><div class="v">14.2만</div><div class="k">누적 절약액</div></div>
+          <div class="s"><div class="v">23</div><div class="k">발견한 보물</div></div>
+        </div>
+        <div class="stampcard">
+          <div class="h"><b>이번 주 보물 헌터 스탬프</b><span>2/10 · 완주 시 5,000P</span></div>
+          <div class="stamps" id="stamps"></div>
+        </div>
+        <div class="dex">
+          <div class="sec-t h"><h3>보물 도감 <small>카테고리별 수집</small></h3></div>
+          <div class="dexgrid" id="dex"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <nav class="tabbar">
+      <div class="tab on" data-s="home" onclick="go('home')"><span class="ti">🧭</span>홈</div>
+      <div class="tab" data-s="pick" onclick="go('pick')"><span class="ti">🃏</span>오늘의 픽</div>
+      <div class="tab" data-s="box" onclick="go('box')"><span class="ti">🧰</span>보물상자</div>
+      <div class="tab" data-s="flash" onclick="go('flash')"><span class="ti">⚡</span>지금 뜬</div>
+      <div class="tab" data-s="my" onclick="go('my')"><span class="ti">🏆</span>마이</div>
+    </nav>
+  </div>
+</div>
+
+<script>
+/* ===== 상품 데이터 (운영 시 샵바이 API 상품/이미지로 교체) ===== */
+const P = [
+  {e:'🥣',n:'유기농 그래놀라 400g',og:12900,dc:5900,d:54,tl:'D-3',left:4,wow:1},
+  {e:'🍪',n:'수제 초코칩 쿠키 12입',og:9800,dc:3900,d:60,tl:'내일 마감',left:2,wow:1},
+  {e:'🥛',n:'프리미엄 두유 24팩',og:19800,dc:9900,d:50,tl:'D-5',left:11},
+  {e:'🧃',n:'제주 감귤주스 1L x3',og:14400,dc:6200,d:57,tl:'D-4',left:7},
+  {e:'🥜',n:'하루견과 믹스 30봉',og:16900,dc:7900,d:53,tl:'D-6',left:9},
+  {e:'☕',n:'스페셜티 드립백 20개',og:18000,dc:8100,d:55,tl:'D-8',left:6},
+  {e:'🍯',n:'수제 유자청 500g',og:11000,dc:4400,d:60,tl:'D-2',left:3,wow:1},
+  {e:'💊',n:'유산균 프로바이오 30포',og:29000,dc:13900,d:52,tl:'D-9',left:5},
+  {e:'🍮',n:'저칼로리 곤약젤리 20입',og:9900,dc:3600,d:64,tl:'내일 마감',left:2,wow:1},
+  {e:'🥟',n:'손만두 모둠 1.2kg (냉동)',og:13900,dc:6900,d:50,tl:'D-7',left:8},
+  {e:'🌾',n:'통귀리 오트밀 1kg',og:8900,dc:3900,d:56,tl:'D-4',left:6},
+  {e:'🧀',n:'수제 브리치즈 200g (냉장)',og:11900,dc:4400,d:63,tl:'오늘 마감',left:3,wow:1},
+];
+const won = v => v.toLocaleString('ko-KR')+'원';
+
+/* ===== 홈 피드 ===== */
+function card(p,i){
+  const stock = Math.min(100, Math.round((p.left/12)*100)+8);
+  return `<div class="pcard" style="animation-delay:${i*40}ms">
+    <div class="ph" style="background:${bg(i)}">${p.e}
+      <div class="disc">-${p.d}%</div>
+      <div class="heart" onclick="heart(this,event)">♥</div>
+      ${p.wow?'<div class="wow">이 가격에?</div>':''}
+    </div>
+    <div class="body">
+      <div class="nm">${p.n}</div>
+      <div class="price"><span class="fn">${won(p.dc)}</span><span class="og">${won(p.og)}</span></div>
+      <div class="meta"><span class="tt ${p.left<=3?'urgent':''}">⏱ ${p.tl}</span><span class="tt">🧾 소비기한 임박</span></div>
+      <div class="stockbar"><i style="width:${stock}%"></i></div>
+      <div class="stocklab">${p.left}개 남음 · 빠르게 소진 중</div>
+    </div></div>`;
+}
+function bg(i){const g=['#FFF3DC','#FDEDE6','#E9F6EF','#EEF1FA','#FBEEF6','#FEF6E0'];return g[i%g.length];}
+function railcard(p,i){
+  return `<div class="rcard"><div class="ph" style="background:${bg(i+2)}">${p.e}</div>
+    <div class="rb"><div class="nm">${p.n}</div>
+    <div class="pr"><span class="dc">-${p.d}%</span><span class="fn">${won(p.dc)}</span></div></div></div>`;
+}
+document.getElementById('feedgrid').innerHTML = P.map(card).join('');
+document.getElementById('rail').innerHTML = P.slice(5,11).map(railcard).join('');
+function heart(el,ev){ev.stopPropagation(); el.classList.toggle('on'); if(el.classList.contains('on')) toast('찜했어요 · 재입고·유사딜 알림 ♥');}
+
+/* 카운터 애니메이션 */
+(function(){let n=0;const t=document.getElementById('newcount');const iv=setInterval(()=>{n+=1;t.textContent=n;if(n>=12)clearInterval(iv);},60);})();
+
+/* ===== 탭 전환 ===== */
+function go(s){
+  document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+  document.getElementById('s-'+s).classList.add('active');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.s===s));
+  document.getElementById('viewport').scrollTop=0;
+  if(s==='flash') startFlash();
+  if(s==='pick' && !deckInit) initDeck();
+}
+
+/* ===== 스와이프 덱 ===== */
+let deck=[...P].sort(()=>0.4-Math.random()).slice(0,8), di=0, liked=[], deckInit=false;
+function initDeck(){
+  deckInit=true; di=0; liked=[];
+  const stack=document.getElementById('deckstack'); stack.innerHTML='';
+  deck.forEach((p,idx)=>{
+    const el=document.createElement('div'); el.className='swcard'; el.dataset.i=idx;
+    el.style.zIndex=deck.length-idx; el.style.transform=`scale(${1-idx*0.03}) translateY(${idx*8}px)`;
+    el.innerHTML=`<div class="ph" style="background:${bg(idx)}">${p.e}
+      <div class="disc">-${p.d}%</div><div class="tstamp">⏱ ${p.tl}</div>
+      <div class="stamp like">찜!</div><div class="stamp nope">패스</div></div>
+      <div class="info"><div class="nm">${p.n}</div>
+      <div class="pr"><span class="fn">${won(p.dc)}</span><span class="og">${won(p.og)}</span><span class="dc">-${p.d}%</span></div></div>`;
+    stack.appendChild(el);
+    if(idx===0) drag(el);
+  });
+  upd();
+}
+function upd(){document.getElementById('deckleft').textContent=Math.max(0,deck.length-di);document.getElementById('deckliked').textContent=liked.length;}
+function top(){return document.querySelector('.swcard[data-i="'+di+'"]');}
+function drag(el){
+  let sx=0,sy=0,dx=0,dy=0,down=false;
+  const start=e=>{down=true;const t=e.touches?e.touches[0]:e;sx=t.clientX;sy=t.clientY;el.style.transition='none';};
+  const move=e=>{if(!down)return;const t=e.touches?e.touches[0]:e;dx=t.clientX-sx;dy=t.clientY-sy;
+    el.style.transform=`translate(${dx}px,${dy}px) rotate(${dx*0.06}deg)`;
+    el.querySelector('.stamp.like').style.opacity=Math.max(0,dx/120);
+    el.querySelector('.stamp.nope').style.opacity=Math.max(0,-dx/120);};
+  const end=()=>{if(!down)return;down=false;el.style.transition='transform .3s ease';
+    if(dx>90) fly('right'); else if(dx<-90) fly('left');
+    else{el.style.transform='';el.querySelector('.stamp.like').style.opacity=0;el.querySelector('.stamp.nope').style.opacity=0;}};
+  el.addEventListener('mousedown',start);el.addEventListener('mousemove',move);window.addEventListener('mouseup',end);
+  el.addEventListener('touchstart',start,{passive:true});el.addEventListener('touchmove',move,{passive:true});el.addEventListener('touchend',end);
+}
+function swipe(dir){const el=top();if(!el)return;el.style.transition='transform .3s ease';fly(dir);}
+function fly(dir){
+  const el=top();if(!el)return;
+  el.style.transform=`translate(${dir==='right'?600:-600}px,40px) rotate(${dir==='right'?24:-24}deg)`;
+  el.style.opacity=0;
+  if(dir==='right'){liked.push(deck[di]);}
+  di++;
+  setTimeout(()=>{const nx=top();if(nx)drag(nx);
+    document.querySelectorAll('.swcard').forEach((c,k)=>{if(k>=di){const o=k-di;c.style.transform=`scale(${1-o*0.03}) translateY(${o*8}px)`;c.style.zIndex=deck.length-k;}});
+    upd(); if(di>=deck.length) finishDeck();},260);
+}
+function finishDeck(){
+  document.querySelector('#s-pick .deckwrap').style.display='none';
+  const r=document.getElementById('recap'); r.classList.add('on');
+  document.getElementById('recapn').textContent=liked.length;
+  document.getElementById('rlist').innerHTML = liked.length? liked.map(p=>
+    `<div class="rrow"><div class="e">${p.e}</div><div class="m"><div class="n">${p.n}</div><div class="p">${won(p.dc)} · ${p.tl}</div></div></div>`).join('')
+    : '<div class="rrow"><div class="e">🙈</div><div class="m"><div class="n">이번엔 패스만 했네요</div><div class="p">홈에서 더 둘러보세요</div></div></div>';
+}
+
+/* ===== 보물상자 ===== */
+const boxItems=[{e:'🍫',n:'다크초콜릿 바',v:4200},{e:'🍪',n:'버터쿠키 세트',v:5500},{e:'🥨',n:'프레첼 스낵',v:3200},{e:'🧃',n:'유기농 주스',v:3800},{e:'🍯',n:'허니 그래놀라',v:6100}];
+function openBox(){
+  const c=document.getElementById('chest'); c.textContent='🧰'; c.classList.add('shake');
+  toast('보물상자를 여는 중... ✨');
+  setTimeout(()=>{
+    document.getElementById('boxpick').style.display='none';
+    const rv=document.getElementById('reveal'); rv.classList.add('on');
+    document.getElementById('revealgrid').innerHTML=boxItems.map((it,i)=>
+      `<div class="ritem" style="animation-delay:${i*120}ms"><div class="e">${it.e}</div><div class="n">${it.n}</div><div class="v">가치 ${won(it.v)}</div></div>`).join('');
+    const tot=boxItems.reduce((a,b)=>a+b.v,0);
+    document.getElementById('revealtotal').innerHTML=`총 가치 ${won(tot)} → 결제 14,900원 · <b>${won(tot-14900)} 절약!</b>`;
+  },1050);
+}
+function resetBox(){document.getElementById('reveal').classList.remove('on');document.getElementById('boxpick').style.display='block';document.getElementById('chest').classList.remove('shake');document.getElementById('chest').textContent='🎁';}
+
+/* ===== 지금 뜬 보물 ===== */
+let flashTimer=null, flashSec=299, drainPct=38;
+function startFlash(){
+  if(flashTimer) return;
+  flashTimer=setInterval(()=>{
+    flashSec--; if(flashSec<0){flashSec=299;}
+    const m=String(Math.floor(flashSec/60)).padStart(2,'0'), s=String(flashSec%60).padStart(2,'0');
+    document.getElementById('clock').textContent=`${m}:${s}`;
+    if(flashSec%5===0 && drainPct>6){drainPct-=2;document.getElementById('drain').style.width=drainPct+'%';
+      const sold=100-drainPct;document.getElementById('drainlab').textContent=`🔥 ${sold}개 소진 · ${drainPct}개 남음`;}
+    if(flashSec%3===0){const names=['김**','이**','박**','최**','정**','한**'];const acts=['담았어요','결제했어요','찜했어요'];
+      const t=document.getElementById('tickt');t.style.animation='none';void t.offsetWidth;t.style.animation='tick 2.6s ease';
+      t.innerHTML=`방금 <span class="b">${names[Math.floor(Math.random()*6)]}님</span>이 ${acts[Math.floor(Math.random()*3)]}`;}
+  },1000);
+}
+
+/* ===== 마이(스탬프·도감) ===== */
+document.getElementById('stamps').innerHTML=Array.from({length:10},(_,i)=>{
+  if(i<2)return '<div class="st done">🧰</div>';
+  if(i===2)return '<div class="st next">?</div>';
+  return '<div class="st">·</div>';}).join('');
+const dex=[{e:'🍪',n:'간식',on:1},{e:'🥛',n:'유제품',on:1},{e:'☕',n:'커피',on:1},{e:'🥜',n:'견과',on:1},
+{e:'🧃',n:'음료',on:1},{e:'💊',n:'건기식',on:0},{e:'🥟',n:'냉동',on:0},{e:'🧀',n:'치즈',on:1},
+{e:'🍯',n:'잼·청',on:1},{e:'🌾',n:'시리얼',on:0},{e:'🥗',n:'신선',on:0},{e:'🍞',n:'베이커리',on:1}];
+document.getElementById('dex').innerHTML=dex.map(d=>`<div class="dx ${d.on?'':'lock'}">${d.e}<span class="lb">${d.n}</span></div>`).join('');
+
+/* ===== 토스트 ===== */
+let tt=null;
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('on'),1800);}
+</script>
+</body>
+</html>
