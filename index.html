@@ -357,6 +357,69 @@ img{max-width:100%;}
 .cta.outline:hover{background:#f6efe2;}
 .savebadge{display:inline-block; background:#dcf5ec; color:var(--mint); font-size:12px; font-weight:800; padding:5px 10px; border-radius:8px;}
 .freeship-ok{background:#dcf5ec; border-color:#bfe9d8; color:var(--mint); font-weight:800;}
+/* ===== 딜 패스포트 · 할인이유 칩 ===== */
+.rzc{display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:800; padding:3px 9px; border-radius:8px; white-space:nowrap;}
+.rzc.r-imb{background:#fde4de; color:var(--red);}
+.rzc.r-over{background:#e7ecfb; color:var(--navy);}
+.rzc.r-pkg{background:#dcf5ec; color:var(--mint);}
+.rzc.r-season{background:var(--gold-soft); color:var(--gold-deep);}
+.rzc.r-refurb{background:#efe6fb; color:#7b52c9;}
+.rzc.r-ugly{background:#ffe9d6; color:#c9700b;}
+.rzrow{display:flex; gap:6px; margin-top:9px; flex-wrap:wrap; align-items:center;}
+.rzrow .rzc,.rzrow .shiptag{flex:0 0 auto; max-width:100%;}
+.rzrow.big .rzc{font-size:12.5px; padding:5px 11px;}
+.shiptag{font-size:10.5px; font-weight:700; color:var(--ink-2); background:#f6f0e6; padding:3px 8px; border-radius:7px; white-space:nowrap;}
+.condtag{font-size:12px; font-weight:800; color:var(--mint); background:#dcf5ec; padding:5px 10px; border-radius:8px;}
+/* 3중 가격 사다리 */
+.pfair{background:#fff; border:1px solid var(--line); border-radius:14px; padding:12px 15px; margin:12px 0 4px;}
+.pfair .pf{display:flex; justify-content:space-between; align-items:baseline; padding:5px 0; font-size:13.5px; color:var(--ink-2);}
+.pfair .pf b{font-weight:800; color:var(--ink);}
+.pfair .pf .strike{color:#a99f92; text-decoration:line-through; font-weight:700;}
+.pfair .pf.now{border-top:1px dashed var(--line); margin-top:3px; padding-top:10px; font-size:15px; color:var(--ink);}
+.pfair .pf.now b{color:var(--red); font-size:20px; font-weight:900;}
+.pfair .pf.unit{font-size:12.5px;} .pfair .pf.unit b{color:var(--gold-deep);}
+/* 딜 패스포트 카드 */
+.passport{background:#fffdf8; border:1.5px solid #f0e4cc; border-radius:16px; padding:15px 16px; margin-bottom:14px;}
+.passport .pp-h{display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-bottom:10px;}
+.passport .pp-t{font-size:15px; font-weight:900; color:var(--ink);}
+.passport .pp-s{font-size:11.5px; color:var(--ink-2); font-weight:600;}
+.passport .pp-why{font-size:13px; font-weight:700; line-height:1.5; padding:10px 12px; border-radius:11px; margin-bottom:12px;}
+.passport .pp-why.r-imb{background:#fde4de; color:#b53a22;}
+.passport .pp-why.r-over{background:#e7ecfb; color:#2c3e6b;}
+.passport .pp-why.r-pkg{background:#dcf5ec; color:#0d7d5c;}
+.passport .pp-why.r-season{background:var(--gold-soft); color:#9a6205;}
+.passport .pp-why.r-refurb{background:#efe6fb; color:#5e3ba0;}
+.passport .pp-why.r-ugly{background:#ffe9d6; color:#a85c07;}
+.passport .pp-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden;}
+.passport .pp-row{background:#fff; padding:9px 12px; display:flex; flex-direction:column; gap:3px;}
+.passport .pp-k{font-size:11px; color:var(--ink-2); font-weight:700;}
+.passport .pp-v{font-size:13px; color:var(--ink); font-weight:700; line-height:1.4;}
+/* ===== Shipping Optimizer (배송 도우미) ===== */
+.shipopt{background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 16px; margin:16px 0;}
+.shipopt .so-h{font-size:14px; font-weight:900; color:var(--ink); margin-bottom:11px;}
+.shipopt .so-h b{color:var(--gold-deep);}
+.pcl-row{display:flex; gap:11px; align-items:center; padding:8px 0; border-top:1px solid var(--line);}
+.pcl-row:first-of-type{border-top:none;}
+.pcl-ic{font-size:19px; flex:0 0 auto;}
+.pcl-b .pcl-t{font-size:13.5px; font-weight:800; color:var(--ink);}
+.pcl-b .pcl-s{font-size:12px; color:var(--ink-2); margin-top:2px;} .pcl-b .pcl-s b{color:var(--ink);}
+.pcl-tip{margin-top:11px; font-size:12px; line-height:1.55; color:var(--ink-2); background:var(--gold-soft); border-radius:10px; padding:10px 12px;} .pcl-tip b{color:var(--gold-deep);}
+/* ===== 내 취향 딜 피드 (개인화) ===== */
+.dealfeed{background:linear-gradient(160deg,#fffdf8,#fff6e6); border:1.5px solid #f0e4cc; border-radius:18px; padding:16px 17px; margin:16px 0 8px;}
+.dealfeed .df-h{margin-bottom:12px;}
+.dealfeed .df-t{font-size:16px; font-weight:900; color:var(--ink); display:flex; align-items:center; gap:8px;}
+.dealfeed .df-badge{font-size:10.5px; font-weight:800; color:#fff; background:var(--gold-deep); padding:2px 8px; border-radius:20px;}
+.dealfeed .df-s{font-size:12px; color:var(--ink-2); margin-top:4px; font-weight:600;}
+.dealfeed .df-g{display:flex; align-items:center; gap:10px; margin-bottom:9px; flex-wrap:wrap;}
+.dealfeed .df-lb{font-size:12px; font-weight:800; color:var(--ink-2); flex:0 0 78px;}
+.dealfeed .df-chips{display:flex; gap:6px; flex-wrap:wrap;}
+.dealfeed .dfc{font-size:12.5px; font-weight:700; padding:6px 12px; border-radius:20px; background:#fff; border:1px solid var(--line); color:var(--ink-2); cursor:pointer; transition:.15s; user-select:none;}
+.dealfeed .dfc.on{background:var(--gold-deep); border-color:var(--gold-deep); color:#fff;}
+.dealfeed .df-res{display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px dashed #e6d8bd;}
+.dealfeed .df-res>span{font-size:13.5px; font-weight:700; color:var(--ink); flex:1 1 auto; min-width:180px;} .dealfeed .df-res b{color:var(--red); font-size:16px;}
+.dealfeed .df-apply{background:var(--ink); color:#fff; border:none; border-radius:11px; padding:9px 15px; font-size:13px; font-weight:800; cursor:pointer; font-family:inherit;}
+.dealfeed .df-alarm{background:#fff; color:var(--gold-deep); border:1.5px solid var(--gold); border-radius:11px; padding:9px 14px; font-size:13px; font-weight:800; cursor:pointer; font-family:inherit;}
+@media(max-width:520px){ .passport .pp-grid{grid-template-columns:1fr;} .dealfeed .df-lb{flex-basis:100%;} }
 
 /* 라운드2 추가 요소 */
 .daystamp{display:inline-block; margin-top:6px; background:#ffffff2e; color:#fff; font-size:11.5px; font-weight:800; padding:3px 10px; border-radius:20px;}
@@ -433,13 +496,14 @@ img{max-width:100%;}
       <div class="big">🧭</div>
       <div class="txt"><b>오늘 새로 뜬 보물 <span id="newcount">12</span>개</b><span>매일 바뀌는 임박 재고 — 지금 안 건지면 사라져요</span><span class="daystamp" id="daystamp">오늘의 보물</span></div>
     </div>
+    <div class="dealfeed" id="dealfeed"></div>
     <div class="toggle">
       <div class="chip on" data-cat="추천" onclick="filterFeed('추천')">✨ 추천</div><div class="chip" data-cat="전체" onclick="filterFeed('전체')">전체</div>
       <div class="chip" data-cat="간식" onclick="filterFeed('간식')">🍪 간식</div><div class="chip" data-cat="신선" onclick="filterFeed('신선')">🥗 신선</div><div class="chip" data-cat="건기식" onclick="filterFeed('건기식')">💊 건기식</div>
     </div>
     <div class="sec-t"><h3>MD가 오늘 건진 보물 <span class="mdinit">MD</span><small>할인율·임박도·소비기한 균형으로 골랐어요</small></h3></div>
     <div class="rail" id="rail"></div>
-    <div class="sec-t"><h3>취향 근처의 의외성 <small>구조화된 우연</small></h3><a onclick="filterFeed('전체')" style="cursor:pointer">더보기</a></div>
+    <div class="sec-t"><h3 id="feedhead">취향 근처의 의외성 <small>구조화된 우연</small></h3><a onclick="filterFeed('전체')" style="cursor:pointer">더보기</a></div>
     <div class="grid" id="feedgrid"></div>
     <div class="notice" style="margin-top:22px;text-align:center">🌅 <b>내일 오전 새 보물 공개</b> · 다음 갱신까지 <b id="homenext">--:--:--</b> · <a onclick="notifyDaily()" style="cursor:pointer;color:var(--gold-deep);font-weight:800">매일 새 보물 알림 받기</a></div>
   </section>
@@ -621,19 +685,20 @@ img{max-width:100%;}
 
 <script>
 /* ===== 상품 데이터 (im = img/<slug>.jpg · 운영 시 샵바이 API 상품/이미지로 교체) ===== */
+/* 상품 모델 = 딜 패스포트 필드 포함(SSOT). reason=할인이유·mkt=주요몰 최근가·cond=상태·flaw=하자/특이·retn=반품·ship=배송·seller=판매주체 */
 const P = [
-  {im:'granola',n:'유기농 그래놀라 400g',og:12900,dc:5900,d:54,tl:'D-3',left:4,wow:1,c:'간식',exp:'2026.08.16',origin:'미국산',alg:'대두·견과 함유 가능'},
-  {im:'cookie',n:'수제 초코칩 쿠키 12입',og:9800,dc:3900,d:60,tl:'내일 마감',left:2,wow:1,c:'간식',exp:'2026.08.14',origin:'국산',alg:'밀·우유·대두 함유'},
-  {im:'soymilk',n:'프리미엄 두유 24팩',og:19800,dc:9900,d:50,tl:'D-5',left:11,c:'음료',exp:'2026.08.18',origin:'국산',alg:'대두 함유'},
-  {im:'juice',n:'제주 감귤주스 1L x3',og:14400,dc:6200,d:57,tl:'D-4',left:7,c:'음료',exp:'2026.08.17',origin:'국산(제주)',alg:'복숭아 알레르기 주의'},
-  {im:'nuts',n:'하루견과 믹스 30봉',og:16900,dc:7900,d:53,tl:'D-6',left:9,c:'건기식',exp:'2026.08.19',origin:'수입산(혼합)',alg:'땅콩·견과류 함유'},
-  {im:'coffee',n:'스페셜티 드립백 20개',og:18000,dc:8100,d:55,tl:'D-8',left:6,c:'음료',exp:'2026.08.21',origin:'에티오피아산',alg:'해당 없음'},
-  {im:'yuja',n:'수제 유자청 500g',og:11000,dc:4400,d:60,tl:'D-2',left:3,wow:1,c:'건기식',exp:'2026.08.15',origin:'국산(고흥)',alg:'해당 없음'},
-  {im:'probiotics',n:'유산균 프로바이오 30포',og:29000,dc:13900,d:52,tl:'D-9',left:5,c:'건기식',exp:'2026.08.22',origin:'덴마크산',alg:'우유·대두 함유 가능'},
-  {im:'jelly',n:'저칼로리 곤약젤리 20입',og:9900,dc:3600,d:64,tl:'내일 마감',left:2,wow:1,c:'간식',exp:'2026.08.14',origin:'국산',alg:'해당 없음'},
-  {im:'dumpling',n:'손만두 모둠 1.2kg (냉동)',og:13900,dc:6900,d:50,tl:'D-7',left:8,c:'간편식',exp:'2026.08.20',origin:'국산',alg:'밀·대두·돼지고기 함유'},
-  {im:'oatmeal',n:'통귀리 오트밀 1kg',og:8900,dc:3900,d:56,tl:'D-4',left:6,c:'건기식',exp:'2026.08.17',origin:'호주산',alg:'귀리(글루텐) 함유'},
-  {im:'cheese',n:'수제 브리치즈 200g (냉장)',og:11900,dc:4400,d:63,tl:'오늘 마감',left:3,wow:1,c:'신선',exp:'2026.08.13',origin:'국산',alg:'우유 함유'},
+  {im:'granola',n:'유기농 그래놀라 400g',og:12900,mkt:9900,dc:5900,d:54,tl:'D-3',left:4,wow:1,c:'간식',exp:'2026.08.16',origin:'미국산',alg:'대두·견과 함유 가능',reason:'소비기한 임박',cond:'새상품',flaw:'없음',retn:'제한',ship:'떠리배송',seller:'떠리몰'},
+  {im:'cookie',n:'수제 초코칩 쿠키 12입',og:9800,mkt:6900,dc:3900,d:60,tl:'내일 마감',left:2,wow:1,c:'간식',exp:'2026.08.14',origin:'국산',alg:'밀·우유·대두 함유',reason:'소비기한 임박',cond:'새상품',flaw:'없음',retn:'제한',ship:'떠리배송',seller:'떠리몰'},
+  {im:'soymilk',n:'프리미엄 두유 24팩',og:19800,mkt:14800,dc:9900,d:50,tl:'D-5',left:11,c:'음료',exp:'2026.08.18',origin:'국산',alg:'대두 함유',reason:'과다재고',cond:'새상품',flaw:'없음',retn:'일반',ship:'떠리배송',seller:'떠리몰'},
+  {im:'juice',n:'제주 감귤주스 1L x3',og:14400,mkt:10900,dc:6200,d:57,tl:'D-4',left:7,c:'음료',exp:'2026.08.17',origin:'국산(제주)',alg:'복숭아 알레르기 주의',reason:'패키지 변경',cond:'새상품',flaw:'라벨 리뉴얼 전 구버전 · 내용물 동일',retn:'일반',ship:'떠리배송',seller:'떠리몰'},
+  {im:'nuts',n:'하루견과 믹스 30봉',og:16900,mkt:12900,dc:7900,d:53,tl:'D-6',left:9,c:'건기식',exp:'2026.08.19',origin:'수입산(혼합)',alg:'땅콩·견과류 함유',reason:'과다재고',cond:'새상품',flaw:'없음',retn:'일반',ship:'판매자배송',seller:'자연담은'},
+  {im:'coffee',n:'스페셜티 드립백 20개',og:18000,mkt:13500,dc:8100,d:55,tl:'D-8',left:6,c:'음료',exp:'2026.08.21',origin:'에티오피아산',alg:'해당 없음',reason:'시즌아웃',cond:'새상품',flaw:'전 시즌 블렌드 · 로스팅 품질 정상',retn:'일반',ship:'판매자배송',seller:'빈스로스터리'},
+  {im:'yuja',n:'수제 유자청 500g',og:11000,mkt:7900,dc:4400,d:60,tl:'D-2',left:3,wow:1,c:'건기식',exp:'2026.08.15',origin:'국산(고흥)',alg:'해당 없음',reason:'소비기한 임박',cond:'새상품',flaw:'없음',retn:'제한',ship:'떠리배송',seller:'떠리몰'},
+  {im:'probiotics',n:'유산균 프로바이오 30포',og:29000,mkt:21900,dc:13900,d:52,tl:'D-9',left:5,c:'건기식',exp:'2026.08.22',origin:'덴마크산',alg:'우유·대두 함유 가능',reason:'과다재고',cond:'새상품',flaw:'없음',retn:'일반',ship:'판매자배송',seller:'헬씨365'},
+  {im:'jelly',n:'저칼로리 곤약젤리 20입',og:9900,mkt:6900,dc:3600,d:64,tl:'내일 마감',left:2,wow:1,c:'간식',exp:'2026.08.14',origin:'국산',alg:'해당 없음',reason:'소비기한 임박',cond:'새상품',flaw:'없음',retn:'제한',ship:'떠리배송',seller:'떠리몰'},
+  {im:'dumpling',n:'손만두 모둠 1.2kg (냉동)',og:13900,mkt:10900,dc:6900,d:50,tl:'D-7',left:8,c:'간편식',exp:'2026.08.20',origin:'국산',alg:'밀·대두·돼지고기 함유',reason:'과다재고',cond:'새상품',flaw:'없음',retn:'제한',ship:'떠리배송',seller:'떠리몰'},
+  {im:'oatmeal',n:'통귀리 오트밀 1kg',og:8900,mkt:6400,dc:3900,d:56,tl:'D-4',left:6,c:'건기식',exp:'2026.08.17',origin:'호주산',alg:'귀리(글루텐) 함유',reason:'패키지 변경',cond:'새상품',flaw:'용량 리뉴얼 전 구패키지 · 품질 동일',retn:'일반',ship:'떠리배송',seller:'떠리몰'},
+  {im:'cheese',n:'수제 브리치즈 200g (냉장)',og:11900,mkt:8900,dc:4400,d:63,tl:'오늘 마감',left:3,wow:1,c:'신선',exp:'2026.08.13',origin:'국산',alg:'우유 함유',reason:'소비기한 임박',cond:'새상품',flaw:'없음',retn:'제한',ship:'떠리배송',seller:'떠리몰'},
 ];
 /* 알레르기 표기 SSOT (im 슬러그 기준) — 보물상자 리빌 등 P 밖에서도 공용 */
 const ALG={granola:'대두·견과 함유 가능',cookie:'밀·우유·대두 함유',soymilk:'대두 함유',juice:'복숭아 알레르기 주의',nuts:'땅콩·견과류 함유',coffee:'해당 없음',yuja:'해당 없음',probiotics:'우유·대두 함유 가능',jelly:'해당 없음',dumpling:'밀·대두·돼지고기 함유',oatmeal:'귀리(글루텐) 함유',cheese:'우유 함유',chocolate:'우유·대두 함유',pretzel:'밀 함유'};
@@ -641,6 +706,48 @@ const ALG={granola:'대두·견과 함유 가능',cookie:'밀·우유·대두 �
 const CATMETA={'간식':'🍪','음료':'🧃','건기식':'💊','간편식':'🥟','신선':'🥗'};
 const won = v => v.toLocaleString('ko-KR')+'원';
 function bg(i){const g=['#FFF3DC','#FDEDE6','#E9F6EF','#EEF1FA','#FBEEF6','#FEF6E0'];return g[i%g.length];}
+/* ===== 딜 패스포트 SSOT — '왜 싸지?'를 표준 속성으로 (카드·상세·필터·개인화 공통) ===== */
+const REASON={
+  '소비기한 임박':{ic:'⏰',cls:'r-imb',why:'소비기한이 가까워 정상가보다 크게 낮췄어요'},
+  '과다재고':{ic:'📦',cls:'r-over',why:'정상 상품이 과다 재고라 물량으로 싸게 풀렸어요'},
+  '패키지 변경':{ic:'🔁',cls:'r-pkg',why:'포장·라벨만 바뀐 구버전 · 내용물은 그대로예요'},
+  '시즌아웃':{ic:'🍃',cls:'r-season',why:'지난 시즌 상품이라 시즌아웃가로 낮췄어요'},
+  '리퍼브':{ic:'🔧',cls:'r-refurb',why:'미세 외관 하자만 있는 리퍼 상품, 성능은 정상이에요'},
+  '못난이':{ic:'🥕',cls:'r-ugly',why:'맛·품질은 정상, 외관만 못난 상품이에요'},
+};
+function rz(p){return REASON[p.reason]||{ic:'🏷️',cls:'r-over',why:'합리적인 이유로 가격을 낮췄어요'};}
+function reasonChip(p){const r=rz(p);return `<span class="rzc ${r.cls}">${r.ic} ${p.reason}</span>`;}
+/* 단위가격: 수량·중량 파싱 (개수 → 개당 / 중량 → 100g당) */
+function unitPrice(p){let m;
+  if((m=p.n.match(/(\d+)\s*(팩|봉|포|개|입|정|매)/))) return `${m[2]}당 ${won(Math.round(p.dc/+m[1]))}`;
+  if((m=p.n.match(/x\s*(\d+)/i))) return `개당 ${won(Math.round(p.dc/+m[1]))}`;
+  if((m=p.n.match(/([\d.]+)\s*kg/i))) return `100g당 ${won(Math.round(p.dc/(parseFloat(m[1])*1000)*100))}`;
+  if((m=p.n.match(/(\d+)\s*g/i))) return `100g당 ${won(Math.round(p.dc/+m[1]*100))}`;
+  return '';}
+/* 3중 가격 사다리: 정상가 / 주요몰 최근가 / 떠리몰가 / 단위가 (가격 신뢰) */
+function priceLadder(p){return `<div class="pfair">
+  <div class="pf"><span>정상가</span><b class="strike">${won(p.og)}</b></div>
+  <div class="pf"><span>주요몰 최근가</span><b class="strike">${won(p.mkt)}</b></div>
+  <div class="pf now"><span>떠리몰 가격</span><b>${won(p.dc)}</b></div>
+  ${unitPrice(p)?`<div class="pf unit"><span>단위가격</span><b>${unitPrice(p)}</b></div>`:''}
+</div>`;}
+/* 딜 패스포트 카드(상세): 가격이 낮은 이유·상태·하자·반품·배송·판매주체 전부 공개 */
+function dealPassport(p){const r=rz(p);
+  const rows=[
+    ['할인 이유',`${r.ic} ${p.reason}`],
+    ['정상가 대비',`${p.d}% 할인 · ${won(p.og-p.dc)} 아낌`],
+    ['상품 상태',`${p.cond} · 성능 정상`],
+    ['하자·특이',p.flaw],
+    ['소비기한',`${p.exp}까지 · ${p.tl}`],
+    ['반품 조건',p.retn==='제한'?'제한 (신선·임박 상품)':'일반 반품 가능'],
+    ['배송',`${p.ship}${p.seller!=='떠리몰'?' · '+p.seller:''}`],
+    ['판매 주체',p.seller==='떠리몰'?'떠리몰 (직매입)':`${p.seller} (입점 판매자)`],
+  ];
+  return `<div class="passport">
+    <div class="pp-h"><span class="pp-t">🪪 딜 패스포트</span><span class="pp-s">이 가격이 된 이유를 전부 공개해요</span></div>
+    <div class="pp-why ${r.cls}"><b>왜 이렇게 싸지?</b> ${r.ic} ${r.why}</div>
+    <div class="pp-grid">${rows.map(([k,v])=>`<div class="pp-row"><span class="pp-k">${k}</span><span class="pp-v">${v}</span></div>`).join('')}</div>
+  </div>`;}
 /* 재고 신호: 희소할수록 붉게·바 좁게 (역방향 신호 제거) — card()·renderDetail() 공통 */
 function stockView(p){
   const w=Math.min(100, p.left*12);
@@ -673,6 +780,7 @@ function card(p,i){
     <div class="body">
       <div class="nm" onclick="openDetail(${i})" style="cursor:pointer">${p.n}</div>
       <div class="price"><span class="fn">${won(p.dc)}</span><span class="og">${won(p.og)}</span></div>
+      <div class="rzrow">${reasonChip(p)}<span class="shiptag">${p.ship==='떠리배송'?'🚚 떠리배송':'📦 '+p.seller}</span></div>
       <div class="meta"><span class="tt ${p.left<=3?'urgent':''}">⏱ 소비기한 ${p.tl}</span><span class="tt">🧾 ~${p.exp}</span></div>
       ${sv.show?`<div class="stockbar ${sv.barCls}"><i style="width:${sv.w}%"></i></div>`:''}
       <div class="stocklab ${sv.labCls}">${sv.lab}</div>
@@ -711,6 +819,7 @@ function buildCatChips(){
 }
 function filterFeed(cat){
   document.querySelectorAll('#s-home .toggle .chip').forEach(c=>c.classList.toggle('on', c.dataset.cat===cat));
+  const fh=document.getElementById('feedhead'); if(fh) fh.innerHTML='취향 근처의 의외성 <small>구조화된 우연</small>';
   let items = P.map((p,i)=>({p,i}));
   if(cat==='추천') items.sort((a,b)=>(b.p.wow?1:0)-(a.p.wow?1:0));
   else if(cat!=='전체') items = items.filter(o=>o.p.c===cat);
@@ -721,6 +830,42 @@ function filterFeed(cat){
 buildCatChips();
 filterFeed('추천');
 renderRail();
+/* ===== 내 취향 딜 피드(개인화): 취향 카테고리 × 최소 할인율 × 소비기한 여유 조건으로 오늘 들어온 보물 매칭 ===== */
+const pref={cats:new Set(), minDisc:0, minLeft:0};
+function matchPref(){return P.map((p,i)=>({p,i})).filter(o=>
+  (pref.cats.size===0||pref.cats.has(o.p.c)) && o.p.d>=pref.minDisc && ddayNum(o.p.tl)>=pref.minLeft);}
+function renderDealFeed(){
+  const el=document.getElementById('dealfeed'); if(!el) return;
+  const cats=[...new Set(P.map(p=>p.c))];
+  const n=matchPref().length;
+  el.innerHTML=`
+   <div class="df-h"><div class="df-t">🔔 내 취향 딜 피드 <span class="df-badge">개인화</span></div>
+     <div class="df-s">조건을 정해두면 매일 새로 들어온 재고 중 <b>맞는 보물만</b> 골라 알려드려요</div></div>
+   <div class="df-g"><span class="df-lb">관심 카테고리</span><div class="df-chips">${cats.map(c=>`<span class="dfc ${pref.cats.has(c)?'on':''}" onclick="togglePrefCat('${c}')">${CATMETA[c]||''} ${c}</span>`).join('')}</div></div>
+   <div class="df-g"><span class="df-lb">최소 할인율</span><div class="df-chips">${[0,50,60,70].map(v=>`<span class="dfc ${pref.minDisc===v?'on':''}" onclick="setPrefDisc(${v})">${v===0?'전체':v+'%↑'}</span>`).join('')}</div></div>
+   <div class="df-g"><span class="df-lb">소비기한 여유</span><div class="df-chips">${[0,4,6].map(v=>`<span class="dfc ${pref.minLeft===v?'on':''}" onclick="setPrefLeft(${v})">${v===0?'전체':'D-'+v+' 이상'}</span>`).join('')}</div></div>
+   <div class="df-res"><span>설정한 조건에 맞는 보물 <b>${n}</b>개가 오늘 들어왔어요</span>
+     <button class="df-apply" onclick="applyPrefFeed()">이 조건으로 보기</button>
+     <button class="df-alarm" onclick="notifyPref()">🔔 알림 받기</button></div>`;
+}
+function togglePrefCat(c){ if(pref.cats.has(c)) pref.cats.delete(c); else pref.cats.add(c); renderDealFeed(); }
+function setPrefDisc(v){ pref.minDisc=v; renderDealFeed(); }
+function setPrefLeft(v){ pref.minLeft=v; renderDealFeed(); }
+function applyPrefFeed(){
+  const match=matchPref();
+  document.querySelectorAll('#s-home .toggle .chip').forEach(c=>c.classList.remove('on'));
+  const grid=document.getElementById('feedgrid');
+  grid.innerHTML = match.length ? match.map(o=>card(o.p,o.i)).join('')
+    : '<div class="empty" style="grid-column:1/-1"><div class="eico">🔔</div><p>조건에 맞는 보물이 아직 없어요.<br>조건을 넓혀보세요.</p></div>';
+  const fh=document.getElementById('feedhead'); if(fh) fh.innerHTML=`내 취향 딜 피드 <small>설정 조건에 맞는 ${match.length}개</small>`;
+  grid.scrollIntoView({behavior:'smooth',block:'start'});
+  toast(`조건에 맞는 보물 ${match.length}개만 모았어요 🔔`);
+}
+function notifyPref(){
+  const parts=[[...pref.cats].join('·')||'전체 카테고리', pref.minDisc?pref.minDisc+'%↑ 할인':'', pref.minLeft?'소비기한 D-'+pref.minLeft+' 이상':''].filter(Boolean).join(' · ');
+  toast(`🔔 '${parts}' 조건 알림 설정 · 매일 맞는 보물 ${matchPref().length}개 알려드려요`);
+}
+renderDealFeed();
 function heart(el,ev,i){ev.stopPropagation(); const on=toggleWish(i); el.classList.toggle('on',on); el.setAttribute('aria-pressed',on?'true':'false'); if(on) toast('찜했어요 · 재입고·유사딜 알림 ♥'); updateWishBadge();}
 function notifyDaily(){ toast('🔔 매일 새 보물 알림을 켰어요 · 매일 오전 새 보물 공개'); }
 (function(){let n=0;const t=document.getElementById('newcount');const iv=setInterval(()=>{n+=1;t.textContent=n;if(n>=12)clearInterval(iv);},60);})();
@@ -957,7 +1102,7 @@ function updateBadge(){const n=cartCount();document.querySelectorAll('.js-cc').f
 function addCartI(i,btn){addCartObj(P[i]); if(btn){btn.textContent='담김 ✓';btn.classList.add('added');setTimeout(()=>{btn.textContent='담기';btn.classList.remove('added');},1200);} toast('장바구니에 담았어요 🛒');}
 function addCartObj(p){
   const key=p.n; const ex=cart.find(c=>c.n===key);
-  if(ex) ex.qty++; else cart.push({im:p.im,n:p.n,dc:p.dc,og:p.og||p.dc,qty:1,c:p.c||null,box:p.box||false,sub:p.sub||'',bimgs:p.bimgs||null});
+  if(ex) ex.qty++; else cart.push({im:p.im,n:p.n,dc:p.dc,og:p.og||p.dc,qty:1,c:p.c||null,box:p.box||false,sub:p.sub||'',bimgs:p.bimgs||null,ship:p.ship||'떠리배송',seller:p.seller||'떠리몰'});
   updateBadge();
   bumpStamp(1);
 }
@@ -966,7 +1111,20 @@ function rmItem(idx){cart.splice(idx,1); updateBadge(); renderCart();}
 const SHIP=3000, FREESHIP=30000;
 function itemsTotal(){return cart.reduce((a,c)=>a+c.dc*c.qty,0);}
 function savedTotal(){return cart.reduce((a,c)=>a+(c.og-c.dc)*c.qty,0);}
-function shipFee(){return itemsTotal()>=FREESHIP||itemsTotal()===0?0:SHIP;}
+/* Shipping Optimizer 코어: 떠리배송끼리 1박스 합배송 + 입점 판매자별 개별 택배 → 택배 단위로 배송비·무료문턱 계산 */
+function parcels(){
+  const g={};
+  cart.forEach(c=>{
+    const theori=(c.ship||'떠리배송')==='떠리배송';
+    const key=theori?'__theori':(c.seller||'판매자');
+    (g[key]=g[key]||{theori,seller:c.seller,subtotal:0}).subtotal+=c.dc*c.qty;
+  });
+  return Object.keys(g).sort((a,b)=>(a==='__theori'?-1:1)).map(k=>{
+    const x=g[k], fee=x.subtotal>=FREESHIP?0:SHIP;
+    return {theori:x.theori, seller:x.seller, label:x.theori?'떠리배송 (합배송)':x.seller+' · 판매자배송', subtotal:x.subtotal, fee};
+  });
+}
+function shipFee(){return cart.length?parcels().reduce((a,p)=>a+p.fee,0):0;}
 function finalTotal(){return itemsTotal()+shipFee();}
 function renderCart(){
   const body=document.getElementById('cartbody');
@@ -984,17 +1142,27 @@ function renderCart(){
       <div class="qty"><button onclick="chgQty(${i},-1)">−</button><b>${c.qty}</b><button onclick="chgQty(${i},1)">+</button></div>
     </div><div class="rm" onclick="rmItem(${i})">✕</div></div>`;
   }).join('');
-  const it=itemsTotal();
-  const free = it>=FREESHIP;
-  const nudge = it>0 ? (it<FREESHIP
-    ? `<div class="notice">🚚 <b>${won(FREESHIP-it)}</b> 더 담으면 무료배송! · ${won(SHIP)} 아껴요<div class="stockbar gold" style="margin-top:8px"><i style="width:${Math.min(100,it/FREESHIP*100)}%"></i></div></div>
-       <div class="sec-t"><h3 style="font-size:16px">이럴 때 같이 담는 보물 <small>문턱만 넘으면 무료배송</small></h3></div>
-       <div class="rail">${[1,6,0].map(i=>railcard(P[i],i,true)).join('')}</div>`
-    : `<div class="notice freeship-ok">🚚 무료배송 적용 ✓ · ${won(SHIP)} 아꼈어요</div>`)
-    : '';
-  body.innerHTML = rows + nudge + `<div class="summary">
+  const ps=parcels();
+  const theoriP=ps.find(p=>p.theori);
+  const sellerPs=ps.filter(p=>!p.theori);
+  // ① 떠리배송 무료배송 넛지 (합배송 그룹 한정)
+  let nudge='';
+  if(theoriP){
+    nudge = theoriP.subtotal<FREESHIP
+      ? `<div class="notice">🚚 떠리배송 <b>${won(FREESHIP-theoriP.subtotal)}</b> 더 담으면 무료배송! · ${won(SHIP)} 아껴요<div class="stockbar gold" style="margin-top:8px"><i style="width:${Math.min(100,theoriP.subtotal/FREESHIP*100)}%"></i></div></div>
+         <div class="sec-t"><h3 style="font-size:16px">문턱만 넘으면 무료배송 <small>떠리배송끼리 합배송</small></h3></div>
+         <div class="rail">${[1,8,0].map(i=>railcard(P[i],i,true)).join('')}</div>`
+      : `<div class="notice freeship-ok">🚚 떠리배송 무료배송 적용 ✓ · ${won(SHIP)} 아꼈어요</div>`;
+  }
+  // ② Shipping Optimizer — 이 주문이 택배 몇 개로, 어떻게 도착하는지 사전 공개
+  const optRows = ps.map(p=>`<div class="pcl-row"><span class="pcl-ic">${p.theori?'🚚':'📦'}</span><div class="pcl-b"><div class="pcl-t">${p.label}</div><div class="pcl-s">상품 ${won(p.subtotal)} · 배송비 <b>${p.fee?won(p.fee):'무료'}</b></div></div></div>`).join('');
+  const optTip = sellerPs.length
+    ? `<div class="pcl-tip">💡 떠리배송끼리는 <b>한 박스로 합배송</b>돼요. 판매자배송(${sellerPs.map(p=>p.seller).join('·')})은 판매자별로 <b>각각 배송비</b>가 붙어요 — 같은 판매자 상품을 모아 담으면 배송비를 아껴요.</div>`
+    : `<div class="pcl-tip">💡 떠리배송 상품은 <b>한 박스로 합배송</b>돼요.</div>`;
+  const shipOpt = `<div class="shipopt"><div class="so-h">📦 배송 도우미 · 현재 주문은 택배 <b>${ps.length}개</b>로 도착</div>${optRows}${optTip}</div>`;
+  body.innerHTML = rows + nudge + shipOpt + `<div class="summary">
     <div class="row"><span>상품 금액</span><b>${won(itemsTotal())}</b></div>
-    <div class="row"><span>배송비 ${free?'(3만원↑ 무료)':''}</span><b>${shipFee()?won(shipFee()):'무료'}</b></div>
+    <div class="row"><span>배송비 ${ps.length>1?`(택배 ${ps.length}개 합산)`:(shipFee()?'':'(무료)')}</span><b>${shipFee()?won(shipFee()):'무료'}</b></div>
     <div class="row"><span>정상가 대비 아낀 금액</span><span class="save">− ${won(savedTotal())}</span></div>
     <div class="row tot"><span>총 결제금액</span><b>${won(finalTotal())}</b></div></div>
     <button class="cta" onclick="go('checkout')">${cartCount()}개 · ${won(finalTotal())} 주문하기</button>`;
@@ -1004,7 +1172,7 @@ function pickPay(el){document.querySelectorAll('#pay label').forEach(l=>l.classL
 function renderCheckout(){
   document.getElementById('cosummary').innerHTML=cart.map(c=>
     `<div class="coitem"><img src="img/${c.im}.jpg" alt="${c.n}"><div class="n">${c.n} <small>· ${c.qty}개</small></div><div class="pp">${won(c.dc*c.qty)}</div></div>`).join('')
-    + `<div class="coitem" style="border-top:1px solid var(--line);margin-top:6px;padding-top:12px"><div class="n">배송비</div><div class="pp">${shipFee()?won(shipFee()):'무료'}</div></div>`;
+    + `<div class="coitem" style="border-top:1px solid var(--line);margin-top:6px;padding-top:12px"><div class="n">배송비 ${parcels().length>1?`· 택배 ${parcels().length}개`:''}</div><div class="pp">${shipFee()?won(shipFee()):'무료'}</div></div>`;
   document.getElementById('cofinal').textContent=won(finalTotal());
   document.getElementById('paybtn').textContent=`${won(finalTotal())} 결제하기`;
 }
@@ -1053,11 +1221,14 @@ function renderDetail(){
     <div class="dinfo">
       <div class="dcat">${CATMETA[p.c]||''} ${p.c}</div>
       <div class="dname">${p.n}</div>
+      <div class="rzrow big">${reasonChip(p)}<span class="condtag">${p.cond} · 성능 정상</span></div>
       <div class="dprice"><span class="fn">${won(p.dc)}</span><span class="og">${won(p.og)}</span><span class="dc">-${p.d}%</span></div>
       <div style="margin:10px 0 2px"><span class="savebadge">${won(p.og-p.dc)} 아꼈어요</span></div>
-      <div class="dmeta"><span class="tt ${p.left<=3?'urgent':''}">⏱ 소비기한 ${p.tl}</span><span class="tt">🧾 ~${p.exp}까지</span><span class="tt">🚚 오늘출발</span></div>
+      ${priceLadder(p)}
+      <div class="dmeta"><span class="tt ${p.left<=3?'urgent':''}">⏱ 소비기한 ${p.tl}</span><span class="tt">🧾 ~${p.exp}까지</span><span class="tt">🚚 ${p.ship==='떠리배송'?'오늘출발 떠리배송':p.seller+' 배송'}</span></div>
       ${sv.show?`<div class="stockbar ${sv.barCls}"><i style="width:${sv.w}%"></i></div>`:''}
       <div class="stocklab ${sv.labCls}" style="margin-bottom:14px">${sv.lab}</div>
+      ${dealPassport(p)}
       <div class="dnotice">
         <div class="li"><span>정직 고지</span><div>소비기한이 임박해 정상가보다 크게 낮췄어요. 유통기한이 아닌 소비기한(섭취 안전 잔여) 기준으로 안내드려요. 품질은 정상이며, 받으신 뒤 되도록 빨리 드세요.</div></div>
         <div class="li" style="margin-top:7px"><span>·</span><div>잔여 소비기한 ${p.tl}(${p.exp}까지) · 원산지 ${p.origin} · 알레르기 ${p.alg}</div></div>
